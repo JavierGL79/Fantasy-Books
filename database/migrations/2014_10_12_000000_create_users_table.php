@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('ID_Usuario');
-            $table->string('user_name')->unique()->nullable(false);;
+            $table->string('username')->unique()->nullable(false);;
             $table->string('name')->nullable(false);
-            $table->string('apellido_1')->nullable(false);
-            $table->string('apellido_2')->nullable(); //opcional
+            $table->string('last_name')->nullable(false);
+            $table->string('last_name_2')->nullable(); //opcional
             $table->string('email')->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
