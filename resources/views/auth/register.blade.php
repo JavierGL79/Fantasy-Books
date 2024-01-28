@@ -15,7 +15,7 @@
                             <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('User Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus>
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                             <label for="last_name_2" class="col-md-4 col-form-label text-md-end">{{ __('Last Name 2') }}</label>
 
                             <div class="col-md-6">
-                                <input id="last_name_2" type="text" class="form-control @error('last_name_2') is-invalid @enderror" name="last_name_2" value="{{ old('last_name_2') }}" required autocomplete="last_name_2">
+                                <input id="last_name_2" type="text" class="form-control @error('last_name_2') is-invalid @enderror" name="last_name_2" value="{{ old('last_name_2') }}" autocomplete="last_name_2">
 
                                 @error('last_name_2')
                                     <span class="invalid-feedback" role="alert">
@@ -84,8 +84,8 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" pattern=".{4}">
+                                <small>{{ __('Password must be exactly 4 characters long') }}.</small>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -103,10 +103,12 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4" id="Botonera">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <button type="reset" class="btn btn-secondary">{{__('Restore text')}}</button>
+                                <a href="#" onclick="history.back(); return false;" class="btn btn-danger">{{__('Cancel')}}</a>
                             </div>
                         </div>
                     </form>

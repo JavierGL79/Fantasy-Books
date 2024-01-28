@@ -29,10 +29,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'ID_Usuario';
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
+
     protected $hidden = [
         'password',
         'remember_token',

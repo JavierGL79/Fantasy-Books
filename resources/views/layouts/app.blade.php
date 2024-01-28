@@ -30,7 +30,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a >
+                                <img src="https://www.vexels.com/png-svg/preview/164599/spain-flag-language-icon-circle" alt="Español">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a>
+                                <img src="/path/to/english-flag.png" alt="English">
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
