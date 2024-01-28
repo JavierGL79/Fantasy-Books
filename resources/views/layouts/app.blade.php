@@ -7,12 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Fantasy Books') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="resources/css/app.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -31,13 +33,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a >
-                                <img src="https://www.vexels.com/png-svg/preview/164599/spain-flag-language-icon-circle" alt="Español">
+                            <a class="flag-link">
+                                <img class="flag-img" src="{{ asset('img/spainFlag       .png') }}" alt="Flag of Spain" class="flag-img">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a>
-                                <img src="/path/to/english-flag.png" alt="English">
+                            <a class="flag-link">
+                                <img class="flag-img" src="{{ asset('img/UKFlag           .png') }}" alt="Flag of UK" >
                             </a>
                         </li>
                     </ul>

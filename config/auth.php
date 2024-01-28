@@ -39,6 +39,7 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'use' => App\Http\Controllers\Auth\LoginController::class,
         ],
     ],
 
