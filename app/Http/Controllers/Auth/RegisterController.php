@@ -82,4 +82,17 @@ class RegisterController extends Controller
             //'es_bibliotecario' => $data['es_bibliotecario']
         ]);
     }
+
+    public function register(Request $request)
+{
+    $this->validator($request->all())->validate();
+
+    event(new Registered($user = $this->create($request->all())));
+
+    $this->guard()->login($user);
+
+    return $this->registered($request, $user)
+                    ?: redirect($this->redirectPath())->with('success', 'Registration successfully completed');
+}
+
 }

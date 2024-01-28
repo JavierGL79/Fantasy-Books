@@ -111,6 +111,11 @@
                                 <a href="#" onclick="history.back(); return false;" class="btn btn-danger">{{__('Cancel')}}</a>
                             </div>
                         </div>
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>
