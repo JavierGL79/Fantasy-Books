@@ -55,6 +55,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <a href="#" onclick="history.back(); return false;" class="btn btn-danger">{{__('Cancel')}}</a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
