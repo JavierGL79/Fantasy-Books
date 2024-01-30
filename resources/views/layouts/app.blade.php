@@ -67,15 +67,21 @@
                                 </a>
                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Datos Personales</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos Vigentes</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Consultar Mensajes</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Gestionar Perfil</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Notificaciones</a>
+                                    
+                                    @if(Auth::user()->es_bibliotecario)
+                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Gestionar Catálogo de Libros</a>
+                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos y Devoluciones</a>
+                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Usuarios</a>
+                                    @endif
+                                    
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
