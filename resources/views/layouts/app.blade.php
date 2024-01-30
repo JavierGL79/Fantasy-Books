@@ -14,7 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="resources/css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -34,12 +35,12 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="flag-link">
-                                <img class="flag-img" src="{{ asset('img/spainFlag       .png') }}" alt="Flag of Spain" class="flag-img">
+                                <img class="flag-img" src="{{ asset('img/spainFlag.png') }}" alt="Flag of Spain" class="flag-img">
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="flag-link">
-                                <img class="flag-img" src="{{ asset('img/UKFlag           .png') }}" alt="Flag of UK" >
+                                <img class="flag-img" src="{{ asset('img/UKFlag.png') }}" alt="Flag of UK" >
                             </a>
                         </li>
                     </ul>
@@ -64,9 +65,12 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{__('User')}}: {{ Auth::user()->username }}
                                 </a>
-
+                               
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Datos Personales</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos Vigentes</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Consultar Mensajes</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -82,7 +86,12 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('success'))
+        <div class="card-body" id="success-panel" class="alert alert-success mb-0">
+            {{ Session::get('success') }}
+            {{ __('You are logged in!') }}
+        </div>
+         @endif
         <main class="py-4">
             @yield('content')
         </main>

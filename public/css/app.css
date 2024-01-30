@@ -1,0 +1,21 @@
+.flag-link {
+    display: inline-block; /* Asegura que el enlace se comporte como un bloque en línea */
+  
+}
+
+.flag-img {
+
+    width: auto; /* Hace que la imagen ocupe el 100% del ancho de su contenedor */
+    height: 100%; /* Mantiene la proporción original de la imagen */
+    max-height: 30px; /* Establece una altura máxima para evitar que las imágenes sean demasiado altas */
+    margin-right: 20px;
+}
+
+.dropdown-item-custom {
+    transition: background-color 0.3s ease; /* Transición para suavizar el cambio de color */
+}
+
+.dropdown-menu-end .dropdown-item:hover, .dropdown-menu-end .dropdown-item:focus  {
+    background-color: #284975; /*Ajustar cuando tenga el diseño*/
+    color: #ffffff; /*Ajustar cuando tenga el diseño*/
+}
