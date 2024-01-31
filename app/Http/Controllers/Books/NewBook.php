@@ -34,3 +34,4 @@ class NewBook extends Controller
 
         abort(403, 'No tienes permisos para realizar esta acción.');
     }
+}

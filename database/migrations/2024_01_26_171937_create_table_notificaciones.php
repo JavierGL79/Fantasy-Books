@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('table_notificaciones', function (Blueprint $table) {
-            $table->id('ID_Notice');
+            $table->id();
             $table->timestamp('fecha_envio')->nullable(); // Fecha de envío
             $table->text('mensaje'); // Mensaje de la notificación
             $table->boolean('error_envio')->boolean(false); // Indicador de error al enviar
