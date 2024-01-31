@@ -19,3 +19,12 @@
     background-color: #284975; /*Ajustar cuando tenga el diseño*/
     color: #ffffff; /*Ajustar cuando tenga el diseño*/
 }
+
+.dropdown-menu-end .dropdown-item_biblio:hover, .dropdown-menu-end .dropdown-item_biblio:focus  {
+    background-color: #e77904; /*Ajustar cuando tenga el diseño*/
+    color: #ffffff; /*Ajustar cuando tenga el diseño*/
+}
+
+.backgraund_biblio {
+    background-color: #f7b670;
+}

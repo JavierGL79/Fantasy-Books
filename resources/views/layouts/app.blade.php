@@ -67,14 +67,16 @@
                                 </a>
                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Gestionar Perfil</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Notificaciones</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('profile.show') }}">{{__('Profile Management')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Préstamos')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Notifications')}}</a>
                                     
                                     @if(Auth::user()->es_bibliotecario)
-                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Gestionar Catálogo de Libros</a>
-                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos y Devoluciones</a>
-                                        <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Usuarios</a>
+                                        <div class=".backgraund_biblio">
+                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Gestionar Catálogo de Libros</a>
+                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Préstamos y Devoluciones</a>
+                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Usuarios</a>
+                                        </div>
                                     @endif
                                     
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('logout') }}"
