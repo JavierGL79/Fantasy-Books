@@ -19,3 +19,32 @@
     background-color: #284975; /*Ajustar cuando tenga el diseño*/
     color: #ffffff; /*Ajustar cuando tenga el diseño*/
 }
+
+.dropdown-menu-end a.dropdown-item.bibliotecario  {
+    background-color: #f7b670;
+}
+
+.dropdown-menu-end .dropdown-item.bibliotecario:hover,
+.dropdown-menu-end .dropdown-item.bibliotecario:focus {
+    background-color: #e77904; /*Ajustar cuando tenga el diseño*/
+    color: #ffffff; /*Ajustar cuando tenga el diseño*/
+}
+
+.margin-span-dropdown-item {
+    padding-left: 16px;
+    padding-right: 10px;
+}
+
+.menu-span-tittle:hover {
+
+    cursor: default;
+
+}
+.menu-span-tittle {
+    padding: 4px 16px;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #e77904; /*Ajustar cuando tenga el diseño*/
+    color: #ffffff; /*Ajustar cuando tenga el diseño*/
+}
