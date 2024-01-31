@@ -101,6 +101,11 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <label for="es_bibliotecario" class="col-md-4 col-form-label text-md-right">{{ __('¿Es Bibliotecario?') }}</label>
+
+    <div class="col-md-6">
+        <input id="es_bibliotecario" type="checkbox" class="form-check-input" name="es_bibliotecario" {{ old('es_bibliotecario') ? 'checked' : '' }}>
+    </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4" id="Botonera">
@@ -111,6 +116,7 @@
                                 <a href="#" onclick="history.back(); return false;" class="btn btn-danger">{{__('Cancel')}}</a>
                             </div>
                         </div>
+                        
                         @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}

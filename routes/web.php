@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.profile_edit');
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('/libros/{libro}', [LibroController::class, 'show'])->name('libros.show');

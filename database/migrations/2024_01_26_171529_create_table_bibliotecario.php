@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('table_bibliotecario', function (Blueprint $table) {
-            $table->bigIncrements('ID_Bibliotecario');
+            $table->id();
             //$table->foreignId('ID_Usuario')->constrained('usuarios'); // Referencia a la columna 'ID_Usuario' en la tabla 'usuarios'
             $table->boolean('es_bibliotecario')->default(true);
             $table->timestamps();
