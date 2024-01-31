@@ -67,6 +67,23 @@
                                 </a>
                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('profile.show') }}">{{__('Profile Management')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Préstamos')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Notifications')}}</a>
+                                    
+                                     <!-- Gestionar Catálogo de Libros (con submenú) -->
+                                    <div class="dropdown-divider"></div>
+ 
+                                    <span class="menu-span-tittle margin-span-dropdown-item" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{__('Gestionar Catálogo')}}
+                                    </span>
+                                    <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="#">Crear</a>
+                                        <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="#">Editar</a>
+
+                                    <a class="dropdown-item bibliotecario" href=#>Préstamos y Devoluciones</a>
+                                    <a class="dropdown-item bibliotecario" href=#>Usuarios</a>
+    
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Gestionar Perfil</a>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Préstamos</a>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>Notificaciones</a>
