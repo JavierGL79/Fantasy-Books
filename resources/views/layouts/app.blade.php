@@ -71,14 +71,19 @@
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Préstamos')}}</a>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Notifications')}}</a>
                                     
-                                    @if(Auth::user()->es_bibliotecario)
-                                        <div class=".backgraund_biblio">
-                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Gestionar Catálogo de Libros</a>
-                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Préstamos y Devoluciones</a>
-                                            <a class="dropdown-item dropdown-item_biblio:focus dropdown-item-custom" href=#>Usuarios</a>
-                                        </div>
-                                    @endif
-                                    
+                                     <!-- Gestionar Catálogo de Libros (con submenú) -->
+                                    <div class="dropdown-divider"></div>
+ 
+                                    <span class="menu-span-tittle margin-span-dropdown-item" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{__('Gestionar Catálogo')}}
+                                    </span>
+                                    <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="#">Crear</a>
+                                        <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="#">Editar</a>
+
+                                    <a class="dropdown-item bibliotecario" href=#>Préstamos y Devoluciones</a>
+                                    <a class="dropdown-item bibliotecario" href=#>Usuarios</a>
+    
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
