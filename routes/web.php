@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Books\NewBookController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.profile_edit');
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-Route::get('/libros/{libro}', [LibroController::class, 'show'])->name('libros.show');
+Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libros.nuevo');
+
+
+Route::view('/libros/nuevo', 'books.New_Book')->name('libros.nuevo');
+Route::get('/newBook', [NewBookController::class, 'newBook'])->name('newBook');
+Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
+
