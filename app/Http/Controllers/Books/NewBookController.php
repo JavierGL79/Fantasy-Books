@@ -8,6 +8,7 @@ class NewBookController extends Controller
 {
     public function showForm()
     {
-        return view('books.New_Book');
+        $buttonText = 'Texto del Botón';
+        return view('books.New_Book',);
     }
 }

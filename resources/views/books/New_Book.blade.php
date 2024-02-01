@@ -24,7 +24,7 @@
                                 <input type="text" name="titulo" required>
                             </div>
                         </div>
-                        < class="row mb-3">
+                        <div class="row mb-3">
                             <label for="year">Año:</label>
                             <div class="col-md-6">
                                 <input type="number" name="year" required>
@@ -48,8 +48,10 @@
                                 <input type="file" name="foto">
                             </div>
                         </div>
-
-                        @include('layouts.botonera')
+                        @php
+                            $buttonText = 'Register New Book';
+                        @endphp
+                        @include('layouts.botonera', ['buttonText' => $buttonText])
                     </form>
                 </div>
             </div>

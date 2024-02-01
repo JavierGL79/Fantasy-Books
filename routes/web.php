@@ -30,6 +30,6 @@ Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libro
 
 
 Route::view('/libros/nuevo', 'books.New_Book')->name('libros.nuevo');
-Route::get('/newBook', [NewBookController::class, 'newBook'])->name('newBook');
+Route::get('/newBook', [NewBookController::class, 'showForm'])->name('newBook');
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 
