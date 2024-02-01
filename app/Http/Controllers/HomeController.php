@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\BooksService;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
     }
     public function welcome()
     {
-        // Tu lógica aquí
-        return view('welcome');
+        $booksService = new BooksService();
+        $libros = $booksService->listBooks();
+        return view('welcome', ['libros' => $libros]);
     }
 }

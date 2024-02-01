@@ -25,8 +25,13 @@ class NewBookController extends Controller
             'editorial' => 'required|string',
             'stock' => 'required|integer',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'information' => 'nullable|string'
         ]);
 
+        // Obtener el archivo y guardarlo en el sistema de archivos
+        $foto = $request->file('foto');
+        $ruta_foto = $foto->store('carpeta_destino', 'public');
+        
         // Creación y persistencia del modelo Libro
         $libro = Book::create([
             'autor' => $request->input('autor'),
@@ -34,12 +39,12 @@ class NewBookController extends Controller
             'year' => $request->input('year'),
             'editorial' => $request->input('editorial'),
             'stock' => $request->input('stock'),
-            'foto' => $request->input('foto'),
+            'foto' => $ruta_foto,
+            'information' => $request->input('information')
         ]);
         $message = 'Libro almacenado exitosamente';
         $status = 'success';
     } catch (\Exception $e) {
-        // Manejar cualquier excepción que pueda ocurrir durante el proceso
 
         // Mensaje de error
         $message = 'Error al almacenar el libro: ' . $e->getMessage();

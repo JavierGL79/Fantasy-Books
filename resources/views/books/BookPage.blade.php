@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Detalles del Libro</h1>
+        <h1>$libro->titulo</h1>
 
         <div>
             <strong>Autor:</strong> {{ $libro->autor }}
@@ -10,7 +10,15 @@
         <div>
             <strong>Título:</strong> {{ $libro->titulo }}
         </div>
-        <!-- Agrega más campos del libro según sea necesario -->
+        <div>
+            <strong>Año de edición:</strong> {{ $libro->year }}
+        </div>
+        <div>
+            <strong>Editorial:</strong> {{ $libro->editorial }}
+        </div>
+        <div>
+            {{ $libro->foto }}
+        </div>
 
         <a href="{{ route('home') }}" class="btn btn-primary">Volver</a>
     </div>

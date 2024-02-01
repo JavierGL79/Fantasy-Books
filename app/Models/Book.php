@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+
+    protected $table = 'table_libros';
     use HasFactory;
 
     protected $fillable = [
@@ -16,5 +18,6 @@ class Book extends Model
         'editorial',
         'stock',
         'foto',
+        'information',
     ];
 }
