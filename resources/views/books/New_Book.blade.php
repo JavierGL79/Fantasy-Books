@@ -6,7 +6,18 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
+                
+                @if(isset($status) && $status === 'success')
+    <div class="alert alert-success">
+        {{ $message }}
+    </div>
+@endif
 
+@if(isset($status) && $status === 'error')
+    <div class="alert alert-danger">
+        {{ $message }}
+    </div>
+@endif
                 <div class="card-body">
                     <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
