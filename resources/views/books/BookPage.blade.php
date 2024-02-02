@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>$libro->titulo</h1>
+        <h1>{{ $libro->titulo }}</h1>
 
         <div>
             <strong>Autor:</strong> {{ $libro->autor }}
@@ -20,6 +20,10 @@
             {{ $libro->foto }}
         </div>
 
-        <a href="{{ route('home') }}" class="btn btn-primary">Volver</a>
+        @php
+            $buttonText = 'Edit Book';
+            $cancelButton = 'Back';
+        @endphp
+        @include('layouts.botonera', ['buttonText' => $buttonText, $cancelButton = 'Back'])
     </div>
 @endsection
