@@ -17,14 +17,11 @@ use App\Http\Controllers\Books\BookDetailController;
 |
 */
 
-Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
-
-Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.profile_edit');
