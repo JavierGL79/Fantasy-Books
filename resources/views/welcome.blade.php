@@ -6,7 +6,9 @@
     @if(count($libros) > 0)
         <ul>
             @foreach($libros as $libro)
-                <li>{{ $libro->titulo }} - {{ $libro->autor }}</li>
+                <li>
+                    <a href="{{ route('books.BookPage', ['id' => $libro->id]) }}">{{ $libro->titulo }}</a>
+                </li>
             @endforeach
         </ul>
     @else
