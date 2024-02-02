@@ -17,7 +17,8 @@ use App\Http\Controllers\Books\BookDetailController;
 |
 */
 
-Route::get('/welcome', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
+
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Auth::routes();
