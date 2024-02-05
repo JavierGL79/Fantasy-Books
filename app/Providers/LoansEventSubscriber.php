@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Subscribers;
+namespace App\Providers;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Event;
@@ -17,8 +17,7 @@ class LoansEventSubscriber
     {
         // Escuchar eventos relacionados con préstamos aquí
         $events->listen(
-            'App\Events\PrestamoFinalizadoEvent',
-            'App\Subscribers\LoansEventSubscriber@handlePrestamoFinalizado'
+            'App\Events\UserCreado',
         );
 
         // Agrega más listeners según sea necesario

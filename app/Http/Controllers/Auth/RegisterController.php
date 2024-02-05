@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserCreado;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -12,66 +13,32 @@ use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'username' => ['required', 'unique:users', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'last_name_2' => ['nullable','string', 'max:255'],
+            'last_name_2' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => [
                 'required',
                 'string',
                 'regex:/.{4}/',
-                //'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',  //Regla de validación: 8 caracteres y al menos una letra y un número.
-                'confirmed',    //Confirmación de contraseña
+                'confirmed',
             ],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
         return User::create([
@@ -85,16 +52,36 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $this->authorize('create', $user);
+
+        try {
+            $newUser = User::create([
+                'name' => $request->get('nombre'),
+                'email' => $request->get('email'),
+                'password' => Hash::make($request->get('password')),
+            ]);
+
+            // Disparar el evento UserCreado
+            UserCreado::dispatch($newUser);
+
+            return redirect()->back()->with('status', 'Creado correctamente');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function register(Request $request)
-{
-    $this->validator($request->all())->validate();
+    {
+        $this->validator($request->all())->validate();
+        
+        event(new Registered($user = $this->create($request->all())));
 
-    event(new Registered($user = $this->create($request->all())));
+        $this->guard()->login($user);
 
-    $this->guard()->login($user);
-
-    return $this->registered($request, $user)
-                    ?: redirect($this->redirectPath())->with('success', 'Registration successfully completed');
-}
-
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath())->with('success', 'Registration successfully completed');
+    }
 }
