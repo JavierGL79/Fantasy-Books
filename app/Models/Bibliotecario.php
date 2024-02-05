@@ -1,4 +1,4 @@
-// app/Models/Bibliotecario.php
+<?php
 
 namespace App\Models;
 

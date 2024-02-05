@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('table_bibliotecario', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId('ID_Usuario')->constrained('usuarios'); // Referencia a la columna 'ID_Usuario' en la tabla 'usuarios'
-            $table->boolean('es_bibliotecario')->default(true);
+            $table->foreignId('user_id')->constrained('users'); // Referencia a la columna 'user_id' en la tabla 'users'
             $table->timestamps();
         });
     }
