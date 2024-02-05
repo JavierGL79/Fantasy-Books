@@ -13,15 +13,16 @@ class LoansEventSubscriber
      * @param  \Illuminate\Events\Dispatcher  $events
      * @return void
      */
-    public function subscribe(Dispatcher $events)
-    {
-        // Escuchar eventos relacionados con préstamos aquí
-        $events->listen(
-            'App\Events\UserCreado',
-        );
-
-        // Agrega más listeners según sea necesario
-    }
+    public function subscribe(Dispatcher $events): array_chunk
+        {
+        return [
+            AvisoPrestamoBibliotecario::class => 'handleAvisoPrestamoBibliotecario',
+            AvisoPrestamo::class => 'handleAvisoPrestamo',
+            LibroDevuelto::class => 'handleLibroDevuelto',
+            LibroPrestado::class => 'handleLibroPrestado',
+            PrestamoModificado::class => 'handlePrestamoModificado',
+        ];
+        }
 
     /**
      * Handle prestamo finalizado event.
