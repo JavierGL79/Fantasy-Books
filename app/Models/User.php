@@ -55,9 +55,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
     // Relación uno a uno con el modelo Bibliotecario
     public function bibliotecario()
     {
         return $this->hasOne(Bibliotecario::class, 'user_id');
+    }
+    
+    //Relación con las notificaciones uno a muchas
+    public function notificaciones()
+    {
+        return $this->hasMany(Notificacion::class);
     }
 }

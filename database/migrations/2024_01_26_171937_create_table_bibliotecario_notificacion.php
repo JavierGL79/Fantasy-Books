@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('table_bibliotecario_notificacion', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId('ID_Usuario')->constrained('bibliotecarios');
-            //$table->foreignId('notificacion_id')->constrained('notificaciones');
+            $table->foreignId('bibliotecario_id')->constrained('table_bibliotecario');
+            $table->foreignId('notificacion_id')->constrained('table_notificaciones');
             $table->timestamps();
         });
     }

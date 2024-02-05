@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('table_notificaciones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users'); //Clave foránea para el usuasrio destino
+            $table->foreignId('prestamo_id')->nullable()->constrained('table_prestamos'); //Clave foránea para el préstamo
             $table->timestamp('fecha_envio')->nullable(); // Fecha de envío
             $table->text('mensaje'); // Mensaje de la notificación
             $table->boolean('error_envio')->boolean(false); // Indicador de error al enviar

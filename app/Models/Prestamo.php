@@ -17,7 +17,7 @@ class Prestamo extends Model
 
     protected $primaryKey = 'id';
     
-    //Relaciones entre los modelos Book, state
+    //Relaciones entre los modelos Book, state y notificaciones
     public function book()
     {
         return $this->belongsTo(Book::class, 'prestamo_id');
@@ -26,5 +26,10 @@ class Prestamo extends Model
     public function state()
     {
         return $this->belongsTo(State::class, 'estado_id');
+    }
+
+    public function notificaciones()
+    {
+        return $this->hasMany(Notificacion::class);
     }
 }

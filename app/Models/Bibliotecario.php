@@ -17,4 +17,10 @@ class Bibliotecario extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    
+    //Relación de muchos bibliotecarios a muchas noificaciones
+    public function notificaciones()
+    {
+        return $this->belongsToMany(Notificacion::class, 'bibliotecario_notificacion');
+    }
 }
