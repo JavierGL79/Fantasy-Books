@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_prestamos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamp('fecha_prestamo')->nullable();
-            $table->timestamp('fecha_devolucion')->nullable();
-            $table->timestamps(); 
+        Schema::table('table_libros', function (Blueprint $table) {
+            $table->unsignedBigInteger('prestamo_id')->nullable();
+            $table->foreign('prestamo_id')->references('id')->on('table_prestamos');
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_prestamos');
+        Schema::table('libros', function (Blueprint $table) {
+            //
+        });
     }
 };

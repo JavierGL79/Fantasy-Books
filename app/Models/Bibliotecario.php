@@ -9,6 +9,8 @@ class Bibliotecario extends Model
     protected $fillable = [
         'es_bibliotecario',
     ];
+    
+    protected $primaryKey = 'id';
 
     // Relación uno a uno con el modelo User
     public function user()

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('stock')->nullable(false)->default(1);
             $table->text('foto')->nullable();
             //$table->unsignedBigInteger('prestamo_id')->nullable();
-            //$table->foreign('prestamo_id')->references('ID_Prestamo')->on('prestamos');
+            //$table->foreign('prestamo_id')->references('id')->on('prestamos'); //Relación clave foránea con id de la tabla prestamos
             $table->timestamps();
         });
     }
