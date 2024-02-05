@@ -13,7 +13,7 @@ class LoansEventSubscriber
      * @param  \Illuminate\Events\Dispatcher  $events
      * @return void
      */
-    public function subscribe(Dispatcher $events): array_chunk
+    public function subscribe(Dispatcher $events): array
         {
         return [
             AvisoPrestamoBibliotecario::class => 'handleAvisoPrestamoBibliotecario',
