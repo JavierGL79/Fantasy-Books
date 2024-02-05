@@ -32,6 +32,7 @@ class UserEventSubscriber
         return [
             UserCreado::class => 'handleUserCreado',
             UserModificado::class => 'handleUserModificado',
+            UserEliminado::class => 'handleUserModificado'
         ];
         }
 }
