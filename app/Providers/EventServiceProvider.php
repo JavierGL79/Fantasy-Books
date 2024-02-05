@@ -20,6 +20,12 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    protected $subscribe = [
+        UserEventSubscriber::class,
+        LoansEventSubscriber::class,
+    ];
+    
+
     /**
      * Register any events for your application.
      */

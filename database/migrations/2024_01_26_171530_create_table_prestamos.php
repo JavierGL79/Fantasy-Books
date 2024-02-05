@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('table_prestamos', function (Blueprint $table) {
             $table->id();
             $table->timestamp('fecha_prestamo')->nullable();
-            $table->timestamp('fecha_devolucion')->nullable();
+            $table->timestamp('fecha_devolucion')->nullable()->default(DB::raw('DATE_ADD(NOW(), INTERVAL 3 DAY)'));
             $table->timestamps(); 
         });
     }
