@@ -103,9 +103,9 @@
             </div>
         </nav>
         @if(Session::has('success'))
-        <div class="card-body" id="success-panel" class="alert alert-success mb-0">
-            {{ Session::get('success') }}
-            {{ __('You are logged in!') }}
+        <div class="card text-center totalSuccess" id="success-panel" class="alert alert-success mb-0">
+            
+            {{__('Welcome')}} {{ Auth::user()->username }}. {{ __('You are logged in!') }}
         </div>
          @endif
         <main class="py-4">

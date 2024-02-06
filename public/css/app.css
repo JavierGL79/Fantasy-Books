@@ -65,3 +65,8 @@ section {
     margin-right: auto;
     margin-left: auto;
 }
+
+.totalSuccess {
+    background-color: lightgreen;
+    color: darkgreen;
+}
