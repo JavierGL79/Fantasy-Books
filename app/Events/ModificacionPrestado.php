@@ -13,13 +13,14 @@ use Illuminate\Queue\SerializesModels;
 class ModificacionPrestado
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    
+    public $loan;
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(Loan $loan)
     {
-        //
+        $this->loan = $loan;
     }
 
     /**

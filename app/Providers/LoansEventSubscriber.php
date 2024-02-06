@@ -13,16 +13,7 @@ class LoansEventSubscriber
      * @param  \Illuminate\Events\Dispatcher  $events
      * @return void
      */
-    public function subscribe(Dispatcher $events): array
-        {
-        return [
-            AvisoPrestamoBibliotecario::class => 'handleAvisoPrestamoBibliotecario',
-            AvisoPrestamo::class => 'handleAvisoPrestamo',
-            LibroDevuelto::class => 'handleLibroDevuelto',
-            LibroPrestado::class => 'handleLibroPrestado',
-            PrestamoModificado::class => 'handlePrestamoModificado',
-        ];
-        }
+    
 
     /**
      * Handle prestamo finalizado event.
@@ -36,4 +27,26 @@ class LoansEventSubscriber
         // Accede al préstamo usando $event->prestamo
         // Envía notificaciones, realiza acciones, etc.
     }
+    
+    //Modificación del préstamos
+    public function handleModificacionPrestado(ModificacionPrestado $event)
+    {
+        // Sumar tres días a la fecha de devolución del préstamo
+        $event->loan->update(['fecha_devolucion' => $event->loan->fecha_devolucion->addDays(3)]);
+
+        // Enviar notificación al correo electrónico del usuario
+        Mail::to($event->loan->user->email)->send(new PrestamoModificadoMail($event->loan));
+    }
+
+    public function subscribe(Dispatcher $events): array
+        {
+        return [
+            AvisoPrestamoBibliotecario::class => 'handleAvisoPrestamoBibliotecario',
+            AvisoPrestamo::class => 'handleAvisoPrestamo',
+            LibroDevuelto::class => 'handleLibroDevuelto',
+            LibroPrestado::class => 'handleLibroPrestado',
+            PrestamoModificado::class => 'handleModificacionPrestado',
+        ];
+        }
+
 }
