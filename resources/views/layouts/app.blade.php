@@ -34,12 +34,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="flag-link">
+                            <a class="flag-link" id="ES">
                                 <img class="flag-img" src="{{ asset('img/spainFlag.png') }}" alt="Flag of Spain" class="flag-img">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="flag-link">
+                            <a class="flag-link" id="UK">
                                 <img class="flag-img" src="{{ asset('img/UKFlag.png') }}" alt="Flag of UK" >
                             </a>
                         </li>
