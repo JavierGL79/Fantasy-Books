@@ -18,8 +18,15 @@ class PrestamoController extends Controller
         
         $libro->decrement('stock'); // Reducir el stock en 1
 
-        // Registrar el préstamo en tu lógica específica
-        // ...
+        // Registrar el préstamo en tu lógica
+        
+        $prestamo = new Prestamo([
+            'libro_id' => $libro->id,
+            'usuario_id' => auth()->id(), // ID del usuario autenticado
+            'fecha_prestamo' => now(),           
+        ]);
+
+        $prestamo->save();
 
         // Activar el evento LibroPrestado
         event(new LibroPrestado());
