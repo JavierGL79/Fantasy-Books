@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-header"><h2 class="text-center">{{__('Our books')}}</h2></div>
                     <div class="card-body">
-                    @if(count($libros) > 0)
+                    @if($libros && count($libros) > 0)
                         <ul>
                             @foreach($libros as $libro)
                             <div class="card card-body">
