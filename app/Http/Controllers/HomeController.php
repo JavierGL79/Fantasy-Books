@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\BooksService;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class HomeController extends Controller
 {

@@ -35,17 +35,18 @@
                     <ul class="navbar-nav me-auto">
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         <li class="nav-item">
-            <a class="flag-link" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+            <a class="flag-link" href="{{ LaravelLocalization::getNonLocalizedURL($localeCode) }}">
                 @if($localeCode == 'es')
                     <img class="flag-img" src="{{ asset('img/spainFlag.png') }}" alt="Flag of Spain">
                 @elseif($localeCode == 'en')
                     <img class="flag-img" src="{{ asset('img/UKFlag.png') }}" alt="Flag of UK">
+                @else
+                    <img class="flag-img" src="{{ asset('img/defaultFlag.png') }}" alt="Default Flag">
                 @endif
             </a>
         </li>
     @endforeach
 </ul>
-
 
 
                     <!-- Right Side Of Navbar -->

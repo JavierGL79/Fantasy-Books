@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     // Uncomment the languages that your site supports - or add new ones.
     // These are sorted by the native name, which is the order you might show them in a language selector.
     // Regional languages are sorted by their base language, so "British English" sorts as "English, British"
@@ -310,6 +310,8 @@ return [
     //
     // If false, system will take app.php locale attribute
     'useAcceptLanguageHeader' => true,
+    'customLanguageKey' => 'lang', // prefijo personalizado para el idioma
+
 
     // If `hideDefaultLocaleInURL` is true, then a url without locale
     // is identical with the same url with default locale.
