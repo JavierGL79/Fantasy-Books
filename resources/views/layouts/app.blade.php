@@ -33,17 +33,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="flag-link" id="es" href="{{ LaravelLocalization::getURLFromRouteNameTranslated('es', 'routes.about') }}">
-                                <img class="flag-img" src="{{ asset('img/spainFlag.png') }}" alt="Flag of Spain" class="flag-img">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="flag-link" id="uk" href="{{ LaravelLocalization::getURLFromRouteNameTranslated('en', 'routes.about') }}">
-                                <img class="flag-img" src="{{ asset('img/UKFlag.png') }}" alt="Flag of UK" >
-                            </a>
-                        </li>
-                    </ul>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <li class="nav-item">
+            <a class="flag-link" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                @if($localeCode == 'es')
+                    <img class="flag-img" src="{{ asset('img/spainFlag.png') }}" alt="Flag of Spain">
+                @elseif($localeCode == 'en')
+                    <img class="flag-img" src="{{ asset('img/UKFlag.png') }}" alt="Flag of UK">
+                @endif
+            </a>
+        </li>
+    @endforeach
+</ul>
+
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
