@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
-
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,7 @@ use App\Http\Controllers\Books\BookDetailController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
+Route::get(LaravelLocalization::transRoute('routes.about'), 'AboutController@index')->name('about');
 
 Auth::routes();
 
