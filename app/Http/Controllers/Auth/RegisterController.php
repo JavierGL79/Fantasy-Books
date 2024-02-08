@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\UserCreado;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -10,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Event;
+use App\Events\UserCreado;
 
 class RegisterController extends Controller
 {
@@ -56,16 +57,20 @@ class RegisterController extends Controller
     {
         $user = auth()->user();
         $this->authorize('create', $user);
-
+    
+        $validatedData = $this->validator($request->all())->validate();
+    
         try {
             $newUser = User::create([
-                'name' => $request->get('nombre'),
-                'email' => $request->get('email'),
-                'password' => Hash::make($request->get('password')),
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
             ]);
-
+    
             // Disparar el evento UserCreado
-            UserCreado::dispatch($newUser);
+            Event::dispatch(new UserCreado($newUser));
+            
+            Log::info('Correo enviado correctamente.');
 
             return redirect()->back()->with('status', 'Creado correctamente');
         } catch (\Throwable $th) {

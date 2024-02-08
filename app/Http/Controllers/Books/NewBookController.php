@@ -11,6 +11,7 @@ class NewBookController extends Controller
 {
     public function showForm()
     {
+    
         $buttonText = 'Texto del Botón';
         return view('books.New_Book',);
     }
@@ -25,7 +26,6 @@ class NewBookController extends Controller
             'editorial' => 'required|string',
             'stock' => 'required|integer',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'information' => 'nullable|string',
         ]);
 
         // Creación y persistencia del modelo Libro
@@ -36,11 +36,11 @@ class NewBookController extends Controller
             'editorial' => $request->input('editorial'),
             'stock' => $request->input('stock'),
             'foto' => $request->input('foto'),
-            'information' => $request->input('information')
         ]);
         $message = 'Libro almacenado exitosamente';
         $status = 'success';
     } catch (\Exception $e) {
+        // Manejar cualquier excepción que pueda ocurrir durante el proceso
 
         // Mensaje de error
         $message = 'Error al almacenar el libro: ' . $e->getMessage();

@@ -1,12 +1,12 @@
-<x-mail::message>
-# Introduction
+@component('mail::message')
+# Su usuario ha sido creado
 
-The body of your message.
+¡Hola {{ $notifiable->name }}!
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+Su usuario ha sido creado correctamente en {{ config('app.name') }}.
 
-Thanks,<br>
-{{ config('app.name') }}
-</x-mail::message>
+Gracias por unirse a nosotros.
+
+Atentamente,
+El equipo de Fantasy Books
+@endcomponent

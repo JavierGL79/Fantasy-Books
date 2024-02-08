@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserCradoMail extends Notification
+class UserCreadoMail extends Notification
 {
     use Queueable;
 
@@ -34,12 +34,11 @@ class UserCradoMail extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        //$url = url('/ruta/a/fichero/'.$this->user->id);
+
         return (new MailMessage)
-            ->from('fantasy-books@laravel.com', 'Javier Girón')
+            ->from('fantasy-books@laravel.com')
             ->subject('Su usuario ha sido creado')
-            ->markdown('mail.user-creado-markdown', ['url' => $url ]);
-            //->attach(storage_path('app').'/fichero.txt');
+            ->markdown('mail.user.creado', ['notifiable' => $notifiable]);
     }
 
     /**

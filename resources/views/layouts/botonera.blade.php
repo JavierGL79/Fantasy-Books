@@ -5,8 +5,8 @@
             <a href="#" onclick="history.back(); return false;" class="btn btn-danger" id="cancel">{{__('Back')}}</a>
         @else
             <!-- Mostrar el botón de "Préstame el libro!" para usuarios autenticados -->
-            @if($libro->stock > 0)
-                <button id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Préstame el libro!')}}</button>
+            @if(isset($libro) && isset($libro->stock) && $libro->stock > 0)
+                <button class="btn btn-secondary" id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Préstame el libro!')}}</button>
             @endif
 
             <!-- Mostrar el botón de aceptar para bibliotecarios -->

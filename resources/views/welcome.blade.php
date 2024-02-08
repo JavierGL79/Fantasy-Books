@@ -46,3 +46,6 @@
     </div>
 </div>
 @endsection
+<form action="{{ route('enviar.correo.prueba') }}" method="GET">
+    <button type="submit">Enviar Correo de Prueba</button>
+</form>

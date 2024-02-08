@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PruebaMail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +37,11 @@ Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('bo
 Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libros.nuevo');
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 
+// routes/web.php
+
+Route::get('/enviar-correo-prueba', function () {
+    Mail::to('destinatario@example.com')->send(new PruebaMail());
+    
+    return redirect()->back()->with('status', 'Correo de prueba enviado correctamente');
+})->name('enviar.correo.prueba');
+Route::get('/enviar-correo-userCreado')->name('enviar.correo.userCreado');
