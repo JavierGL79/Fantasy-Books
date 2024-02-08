@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Subscriptores;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Event;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Subscriptores;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\Facades\Event;
@@ -35,19 +35,11 @@ class UserEventSubscriber
     * @return array<string, string>
     */
     
-    public function subscribe(Dispatcher $events): void
-        {
-            $events->listen(
-                UserCreado::class,
-                [UserEventSubscriber::class, 'handleUserCreado']
-            );
-            $events->listen(
-                UserModificado::class,
-                [UserEventSubscriber::class, 'handleUserModificado']
-            );
-            $events->listen(
-                UserEliminado::class,
-                [UserEventSubscriber::class, 'handleUserModificado']
-            );
-        }
+    public function subscribe(Dispatcher $events): array
+    {
+        return [
+            UserCreado::class => 'handleUserCreado',
+            UserModificado::class => 'handleUserModificado',
+        ];
+    }
 }

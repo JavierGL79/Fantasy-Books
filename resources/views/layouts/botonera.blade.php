@@ -14,10 +14,11 @@
                 <button type="submit" class="btn btn-primary" id="aceptar">{{__($buttonText) }}</button>
                 
                 <!-- Mostrar el botón de reset solo en la página de edición de libros-->
-                @if(request()->is('EditBookPage'))
-                @can('editBook', $book)
-        <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-secondary">{{__('Edit Book')}}</a>
-    @endcan
+                @if(request()->is('books/*/edit'))
+
+                    @can('editBook', $book)
+                        <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-secondary">{{__('Edit Book')}}</a>
+                    @endcan
                 @endif
             @endif
 
