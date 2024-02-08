@@ -80,8 +80,7 @@
                                     </span>
                                     
                                     <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="{{ route('libros.nuevo') }}">{{__('Add new book')}}</a>
-                                        <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="#">{{__('Edit book information')}}</a>
-
+                                    
                                     <a class="dropdown-item bibliotecario" href=#>Préstamos y Devoluciones</a>
                                     <a class="dropdown-item bibliotecario" href=#>Usuarios</a>
                                     @endif

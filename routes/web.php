@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
+use App\Http\Controllers\Books\EditBookController;
+
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PruebaMail;
@@ -36,6 +38,8 @@ Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('bo
 
 Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libros.nuevo');
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
+
+Route::get('/books/{id}/edit', [EditBookController::class, 'showForm'])->name('books.edit');
 
 // routes/web.php
 
