@@ -37,7 +37,7 @@ Route::get('/loans', [LoansController::class, 'show'])->name('loans.show');
 Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('books.BookPage');
 
 Route::get('/books/{id}/edit', [EditBookController::class, 'editDetail'])->name('books.EditBook');
-//Route::patch('/books/{id}', [EditBookController::class, 'update'])->name('books.update');
+Route::patch('/books/{id}', [EditBookController::class, 'update'])->name('books.update');
 
 Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libros.nuevo');
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');

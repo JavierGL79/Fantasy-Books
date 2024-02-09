@@ -14,7 +14,7 @@
                 @can('editBook', $libro)
                     <form action="{{ route('books.EditBook', ['id' => $libro->id]) }}" method="GET">
                         @csrf
-                        <button type="submit" class="btn btn-primary">{{__($buttonText) }}</button>
+                        <button type="submit" class="btn btn-primary" id="apply">{{__($buttonText) }}</button>
                     </form>
                 @endcan
                 <!--<button type="submit" class="btn btn-primary" id="aceptar">{{__($buttonText) }}</button>-->
