@@ -9,35 +9,43 @@ use App\Models\Book;
 
 class EditBookController extends Controller
 {
-
-        public function editDetail(BooksService $booksService, $id)
+    protected $booksService;
+        public function __construct(BooksService $booksService)
         {
-            $libro = $booksService->bookDetail($id);
+            $this->booksService = $booksService;
+        }
+
+        public function editDetail($id)
+        {
+            $libro = $this->booksService->bookDetail($id);
             return view('books.EditBook', compact('libro'));
         }
-    
-    /*
-    public function showForm($id)
-    {
-        // Recuperar el libro que se desea editar
-        $libro = Book::findOrFail($id);
 
-        // Devolver la vista de edición con los datos del libro
-        return view('books.EditBook', compact('libro'));
-    }
+        public function update(Request $request, $id)
+        {
+            
+            // Validación de los datos del formulario de edición
+            $request->validate([
+                'autor' => 'required|string',
+                'titulo' => 'required|string',
+                'year' => 'required|integer',
+                'editorial' => 'required|string',
+                'stock' => 'integer',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Ejemplo de validación para la foto
+                'information' =>'string',
+            ]);
+            
+            // Obtener el libro a actualizar utilizando el BooksService
+            $libro = $this->booksService->bookDetail($id);
+            
+            // Actualiza los campos del libro con los datos del formulario
+            $libro->update($request->all());
 
-    public function update(Request $request, $id)
-    {
-        // Validación de los datos del formulario de edición si es necesario
+            // Mensajes de depuración
+            dd('Libro actualizado correctamente', $libro, $request->all());
 
-        // Recuperar el libro que se desea actualizar
-        $book = Book::findOrFail($id);
+            // Redirecciona al detalle del libro con un mensaje de éxito
+            return redirect()->route('books.BookPage', $libro->id)->with('success', 'Libro actualizado correctamente');
 
-        // Actualizar los campos del libro con los datos del formulario
-        $book->update($request->all());
-
-        // Redireccionar a alguna vista de éxito o a la misma vista de edición con un mensaje de éxito
-        return redirect()->route('books.edit', $book->id)->with('success', 'Libro actualizado correctamente');
-    }
-    */
+        }
 }

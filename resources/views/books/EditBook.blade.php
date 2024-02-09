@@ -22,7 +22,6 @@
                 @endif
                 <div class="card-body">
                 <form method="POST" action="{{ route('books.update', ['id' => $libro->id]) }}">
-
                         @csrf
                         @method('PATCH')
                         <div class="row">    
@@ -58,30 +57,26 @@
                                         <input type="number" name="stock" value="{{ $libro->stock }}">
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="col-md-6" id="right_side">   
-                            <div class="row mb-3">
-                                
+
+                            <div class="col-md-6" id="right_side">         
+                                <label for="foto">{{__('Photo')}}:</label>
+                                    <div class="row mb-3">
+                                        <input type="file" name="foto" placeholder="{{ $libro->foto }}">
+                                    </div>                               
                                 <label for="information">{{__('Information')}}:</label>
                                     <div class="row mb-3">
-                                        <label for="foto">{{__('Photo')}}:</label>
-                                        <div class="col-md-6">
-                                            <input type="file" name="foto" value="{{ $libro->foto }}">
+                                    <textarea name="information" rows="4"value="{{ $libro->information }}"></textarea>
                                     </div>
-                                    
-                                    <div class="col-md-6">
-                                        <textarea name="information" rows="4"value="{{ $libro->information }}"></textarea>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary">{{__('Aplly modifications')}}</button>
                                     </div>
-                                </div>
                             </div>
+    
                         </div>
-                        @php
-                            $buttonText = 'Aplly modifications';
-                        @endphp
-                        @include('layouts.botonera', ['buttonText' => $buttonText])
+                        
                     </form>
+
                 </div>
             </div>
         </div>
