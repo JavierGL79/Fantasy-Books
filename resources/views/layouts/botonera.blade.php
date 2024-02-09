@@ -11,15 +11,16 @@
 
             <!-- Mostrar el botón accesible para el bibliotecarios -->
             @if(Auth::user()->es_bibliotecario)
-                <button type="submit" class="btn btn-primary" id="aceptar">{{__($buttonText) }}</button>
+                @can('editBook', $libro)
+                    <form action="{{ route('books.EditBook', ['id' => $libro->id]) }}" method="GET">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">{{__($buttonText) }}</button>
+                    </form>
+                @endcan
+                <!--<button type="submit" class="btn btn-primary" id="aceptar">{{__($buttonText) }}</button>-->
                 
                 <!-- Mostrar el botón de reset solo en la página de edición de libros-->
-                @if(request()->is('books/*/edit'))
 
-                    @can('editBook', $book)
-                        <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn btn-secondary">{{__('Edit Book')}}</a>
-                    @endcan
-                @endif
             @endif
 
             <!-- Mostrar siempre el botón de volver para usuarios autenticados -->
