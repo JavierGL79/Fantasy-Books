@@ -32,9 +32,7 @@ class BookDetailController extends Controller
             $libro = $this->booksService->bookDetail($id);
             $libro->delete();
 
-            Session::flash('success', 'El libro se eliminó correctamente.');
-
-            return Redirect::route('welcome');
+            return redirect()->route('welcome')->with('success', 'Libro eliminado exitosamente');
         } catch (\Exception $e) {
             return Redirect::back()->with('error', 'Error al eliminar el libro: ' . $e->getMessage());
         }

@@ -53,9 +53,11 @@ class LoginController extends Controller
     {
         // Otros procesos de autenticación...
 
-        // Guardar el mensaje de éxito en la sesión
-        Session::flash('success', 'You are logged in!');
-
+        if (Session::get('show_welcome_message')) {
+            Session::flash('success', 'You are logged in!');
+            Session::put('show_welcome_message', true);
+        }
+    
         return redirect()->intended($this->redirectPath());
     }
 }

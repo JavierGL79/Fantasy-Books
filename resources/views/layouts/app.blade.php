@@ -101,7 +101,7 @@
                 </div>
             </div>
         </nav>
-        @if(Session::has('success'))
+        @if(Auth::check() && Session::get('show_welcome_message', true))
         <div class="card text-center totalSuccess" id="success-panel" class="alert alert-success mb-0">
             
             {{__('Welcome')}} {{ Auth::user()->username }}. {{ __('You are logged in!') }}
