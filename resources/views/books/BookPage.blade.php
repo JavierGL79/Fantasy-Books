@@ -27,4 +27,3 @@
         @include('layouts.botonera', ['buttonText' => $buttonText, $cancelButton = 'Back'])
     </div>
 @endsection
-

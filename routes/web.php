@@ -35,13 +35,11 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 Route::get('/loans', [LoansController::class, 'show'])->name('loans.show');
 
 Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('books.BookPage');
-
 Route::get('/books/{id}/edit', [EditBookController::class, 'editDetail'])->name('books.EditBook');
 Route::patch('/books/{id}//update', [EditBookController::class, 'update'])->name('books.update');
-
 Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libros.nuevo');
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
-
+Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
 // routes/web.php
 
