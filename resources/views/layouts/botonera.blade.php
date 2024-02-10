@@ -13,25 +13,26 @@
 
             <!-- Muestra el botón accesible para los bibliotecarios -->
             @if(Auth::user()->es_bibliotecario)
-                @can('editBook', $libro)
-                    @csrf
-                    <form action="{{ route('books.EditBook', ['id' => $libro->id]) }}" method="GET">
-                        <button type="submit" class="btn btn-primary" id="apply">{{__($buttonText) }}</button>
-                    </form>
-                    
-                    <!-- Botón de eliminar -->
-                    @if(request()->is('books/*'))
-                        <div class="col-md-4">
-                            <h4>Al pulsar "EliminarLibro", el registro será borrado permanentemente del sistema</h4>
-                            <form action="{{ route('books.delete', ['id' => $libro->id]) }}" method="POST" id="delete">
-                            @csrf
-                            @method('DELETE')
-                                <button type="submit" class="btn btn-danger">{{__('Delete Book')}}</button>    
-                            </form>
-                        </div>
-                    @endif
-                @endcan
-                
+                @if(isset($libro))
+                    @can('editBook', $libro)
+                        @csrf
+                        <form action="{{ route('books.EditBook', ['id' => $libro->id]) }}" method="GET">
+                            <button type="submit" class="btn btn-primary" id="apply">{{__($buttonText) }}</button>
+                        </form>
+                        
+                        <!-- Botón de eliminar -->
+                        @if(request()->is('books/*'))
+                            <div class="col-md-4">
+                                <h4>Al pulsar "EliminarLibro", el registro será borrado permanentemente del sistema</h4>
+                                <form action="{{ route('books.delete', ['id' => $libro->id]) }}" method="POST" id="delete">
+                                @csrf
+                                @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">{{__('Delete Book')}}</button>    
+                                </form>
+                            </div>
+                        @endif
+                    @endcan
+                @endif
             @endif
         @endguest
     </div>
