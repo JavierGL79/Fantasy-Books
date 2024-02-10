@@ -13,16 +13,23 @@ use Illuminate\Support\Facades\Session;
 
 class BookDetailController extends Controller
 {
-    public function showDetail(BooksService $booksService, $id)
+    protected $booksService;
+
+    public function __construct(BooksService $booksService)
     {
-        $libro = $booksService->bookDetail($id);
+        $this->booksService = $booksService;
+    }
+
+    public function showDetail($id)
+    {
+        $libro = $this->booksService->bookDetail($id);
         return view('books.BookPage', compact('libro'));
     }
 
     public function destroy(Request $request, $id)
     {
         try {
-            $libro = Book::findOrFail($id);
+            $libro = $this->booksService->bookDetail($id);
             $libro->delete();
 
             Session::flash('success', 'El libro se eliminó correctamente.');
