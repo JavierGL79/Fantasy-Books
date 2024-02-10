@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    use HasFactory;
 
+    protected $table = 'table_libros';
+    use HasFactory;
+    
     protected $fillable = [
         'autor',
         'titulo',
@@ -16,5 +18,14 @@ class Book extends Model
         'editorial',
         'stock',
         'foto',
+        'information',
     ];
+    
+    protected $primaryKey = 'id';
+    
+    // Relación uno a muchos con Prestamo
+    public function prestamos()
+    {
+        return $this->hasMany(Prestamo::class, 'prestamo_id');
+    }
 }
