@@ -1,9 +1,15 @@
-@extends('layouts.app')
+
 @section('content')
 <div class="container"  id="notice">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+            @extends('layouts.app')
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success')  && !session('success')}}
+                    </div>
+                @endif
                 @if (session('status'))
                     <div class="card-header">
                         <div class="alert alert-success" role="alert">
