@@ -21,8 +21,8 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     protected $subscribe = [
-        UserEventSubscriber::class,
-        LoansEventSubscriber::class,
+        \App\Subscriptores\UserEventSubscriber::class,
+        \App\Subscriptores\LoansEventSubscriber::class,
     ];
     
 
