@@ -79,6 +79,7 @@
                         {{__('Sorry, no books currently registered')}}.
                     </div>
                     @endif
+                    {{$libros->links()}}
                 </div>
             </div>
         </div>

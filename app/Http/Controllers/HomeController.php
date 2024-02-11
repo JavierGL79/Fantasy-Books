@@ -7,6 +7,7 @@ use App\Services\BooksService;
 use Illuminate\Support\Facades\DB;  ////Método Query Biuilder
 use App\Models\Book;
 
+
 class HomeController extends Controller
 {
     /**
@@ -41,7 +42,7 @@ class HomeController extends Controller
                 
         } else {
             // Si no se ha realizado una búsqueda, muestra todos los libros
-            $libros = $booksService->listBooks();
+            $libros =  Book::orderBy('created_at', 'asc')->paginate(10);
         }
         
         return view('welcome', ['libros' => $libros, 'title_search_query' => $title_search_query]);   
