@@ -34,6 +34,7 @@ Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.s
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.profile_edit');
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
+
 Route::get('/loans', [LoansController::class, 'show'])->name('loans.show');
 
 Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('books.BookPage');
@@ -44,6 +45,8 @@ Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('book
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.delete');
+
 // routes/web.php
 
 Route::get('/enviar-correo-prueba', function () {

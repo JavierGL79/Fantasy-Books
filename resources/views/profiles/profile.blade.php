@@ -18,5 +18,7 @@
             <a href="{{ route('profiles.profile_edit') }}" class="btn btn-primary">Edit Profile</a>
         </div>
     </div>
+    @include('layouts.botonera')
+
 </div>
 @endsection
