@@ -79,10 +79,10 @@
                                         {{__('Gestionar Catálogo')}}
                                     </span>
                                     
-                                    <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="{{ route('libros.nuevo') }}">{{__('Add new book')}}</a>
+                                    <a class="dropdown-item text-end bibliotecario margin-span-dropdown-item" href="{{ route('libros.nuevo') }}" id="newBook">{{__('Add new book')}}</a>
                                     
-                                    <a class="dropdown-item bibliotecario" href=#>Préstamos y Devoluciones</a>
-                                    <a class="dropdown-item bibliotecario" href=#>Usuarios</a>
+                                    <a class="dropdown-item bibliotecario" href=# id="Loans">Préstamos y Devoluciones</a>
+                                    <a class="dropdown-item bibliotecario" href="{{ route('users.UserList') }}" id="userList">{{__('Users List')}}</a>
                                     @endif
                                     
                                     <div class="dropdown-divider"></div>

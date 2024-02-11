@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
 use App\Http\Controllers\Books\EditBookController;
+use App\Http\Controllers\Users\UserListController;
+
 
 
 use Illuminate\Support\Facades\Mail;
@@ -41,6 +43,7 @@ Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libro
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
+Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
 // routes/web.php
 
 Route::get('/enviar-correo-prueba', function () {
