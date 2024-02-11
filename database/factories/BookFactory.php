@@ -17,13 +17,13 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'autor' => $faker->name,
-            'titulo' => $faker->sentence,
-            'year' => $faker->year,
-            'editorial' => $faker->company,
-            'stock' => $faker->numberBetween(1, 100),
-            'foto' => $faker->imageUrl(),
-            'information' => $faker->paragraph,
+            'autor' => fake()->name($gender = 'male'|'female'),
+            'titulo' => fake()->sentence(3),
+            'year' => fake()->year,
+            'editorial' => fake()->company(),
+            'stock' => fake()->numberBetween(1, 100),
+            'foto' => fake()->imageUrl(),
+            //'information' => fake()->paragraph(),
         ];
     }
 }
