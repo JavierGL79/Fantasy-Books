@@ -13,8 +13,8 @@
             @foreach($users as $user)
                     <div class="user-item">
                         <li style="display: flex; align-items: center;">
-                            <h2 style="margin-right: 10px;">{{ $user->name }}</h2>
-                            <h2 style="margin-right: 10px;">{{ $user->last_name }}</h2>
+                            <h2 style="margin-right: 10px;">{{ $user->name }} y su id {{ $user->id }}</h2>
+                            <h2 style="margin-right: 10px;">{{ $user->last_name }}</h2> 
                             <h2 style="margin-right: 10px;">{{ $user->last_name_2 }}</h2>
                             <span class="{{ $user->es_bibliotecario ? 'bibliotecario-badge' : 'usuario-badge' }}" style="{{ $user->es_bibliotecario ? '' : 'display: inline-block;' }}">
                                 {{ $user->es_bibliotecario ? 'Bibliotecario' : 'Usuario' }}
