@@ -1,10 +1,7 @@
 body {
     margin:5px;
+    background-image: url("{{asset(img/fondo_web.jp)}}");
 }
-
-section {
-    background-image: url("img/fondo_web.jp");
-       }
 
 .flag-link {
     display: inline-block; /* Asegura que el enlace se comporte como un bloque en línea */

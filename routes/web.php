@@ -44,7 +44,7 @@ Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libro
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
-Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
+//Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
 
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');

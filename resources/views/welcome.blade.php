@@ -20,13 +20,15 @@
         <h2 class="text-center">{{__('Search area')}}</h2>
     </div>
     <div class="card-body">
-        <form action="{{ route('books.search') }}" method="GET" class="text-center" style="max-width: 50%; margin: auto;">
+         <form action="{{ url('/') }}" method="GET" class="text-center" style="max-width: 50%; margin: auto;">
+
             <div class="card-body">
                 <div class="input-group mb-3 d-flex align-items-center">
                     <h4 class="mb-0">
                         <label for="title_search_query" class="mb-0">{{__('By title')}}:&nbsp;</label>
                     </h4>
-                    <input type="text" class="form-control" id="title_search_query" placeholder="{{__('Search books')}} {{__('by title')}}" name="title_search_query">
+                    <input type="text" class="form-control" id="title_search_query" placeholder="{{__('Search books')}} {{__('by title')}}" name="title_search_query" value="{{ $title_search_query }}">
+
                 </div>
                 <div class="input-group mb-3 d-flex align-items-center">
                     <h4 class="mb-0">
@@ -48,7 +50,7 @@
                     <input type="text" class="form-control" id="year_range_end" placeholder="{{__('End year')}}" name="year_range_end">
                 </div>
 
-                <button class="btn btn-primary" type="submit">{{__('Search')}}</button>
+                <button class="btn btn-primary" type="submit">{{__('Search books')}}</button>
             </div>
         </form>
     </div>
