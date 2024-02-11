@@ -45,7 +45,8 @@ Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('book
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
-Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.delete');
+Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('user.delete');
+
 
 // routes/web.php
 
