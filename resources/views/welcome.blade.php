@@ -79,9 +79,9 @@
                         {{__('Sorry, no books currently registered')}}.
                     </div>
                     @endif
-                    {{$libros->links()}}
                 </div>
             </div>
+            {{$libros->links('pagination::tailwind')}}
         </div>
     </div>
 </div>
