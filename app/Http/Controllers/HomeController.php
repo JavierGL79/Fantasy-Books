@@ -30,10 +30,13 @@ class HomeController extends Controller
         $libros = [];
         $title_search_query = trim($request->get('title_search_query'));
         $author_search_query = trim($request->get('author_search_query'));
+        $year_search_query = trim($request->get('year_search_query'));
+        $year_range_start = trim($request->get('year_range_start'));
+        $year_range_end = trim($request->get('year_range_end'));
 
-         // Comprueba si se ha realizado una búsqueda por título o autor
-         if ($title_search_query || $author_search_query) {
-            // Si se ha proporcionado un título o un autor, realiza la búsqueda
+        // Comprueba si se ha realizado una búsqueda por título, autor, año o rango de años
+        if ($title_search_query || $author_search_query || $year_search_query || ($year_range_start && $year_range_end)) {
+            // Si se ha proporcionado algún criterio de búsqueda, realiza la búsqueda
             $query = Book::query();
 
             if ($title_search_query) {
@@ -46,10 +49,21 @@ class HomeController extends Controller
                 $query->where('autor', 'LIKE', '%' . $author_search_query . '%');
             }
 
+            if ($year_search_query) {
+                // Si se proporciona un año, añade la condición de búsqueda por año
+                $query->where('year', $year_search_query);
+
+            }
+
+            if ($year_range_start && $year_range_end) {
+                // Si se proporciona un rango de años, añade la condición de búsqueda por rango de años
+                $query->whereBetween('fyear', [$year_range_start, $year_range_end]);
+            }
+
             // Ejecuta la consulta y obtiene los resultados paginados
             $libros = $query->orderBy('created_at', 'asc')->paginate(10);
         } else {
-            // Si no se proporciona ni título ni autor, muestra todos los libros
+            // Si no se proporciona ningún criterio de búsqueda, muestra todos los libros
             $libros = Book::orderBy('created_at', 'asc')->paginate(10);
         }
 
@@ -57,7 +71,10 @@ class HomeController extends Controller
         return view('welcome', [
             'libros' => $libros,
             'title_search_query' => $title_search_query,
-            'author_search_query' => $author_search_query
+            'author_search_query' => $author_search_query,
+            'year_search_query' => $year_search_query,
+            'year_range_start' => $year_range_start,
+            'year_range_end' => $year_range_end
         ]);
-}
+    }
 }
