@@ -57,7 +57,7 @@ class HomeController extends Controller
 
             if ($year_range_start && $year_range_end) {
                 // Si se proporciona un rango de años, añade la condición de búsqueda por rango de años
-                $query->whereBetween('fyear', [$year_range_start, $year_range_end]);
+                $query->whereBetween('year', [$year_range_start, $year_range_end]);
             }
 
             // Ejecuta la consulta y obtiene los resultados paginados
