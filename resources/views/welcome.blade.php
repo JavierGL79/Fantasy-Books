@@ -4,13 +4,13 @@
 <div class="container" id="notice">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            
                 @if(session('success'))
                 <div class="alert alert-success text-center">
                     {{ session('success') }}
                 </div>
                 @endif
-            </div>
+            
         </div>
     </div>
 </div>
@@ -81,7 +81,7 @@
                     @endif
                 </div>
             </div>
-            {{$libros->links('pagination::tailwind')}}
+            {{$libros->links()}}
         </div>
     </div>
 </div>

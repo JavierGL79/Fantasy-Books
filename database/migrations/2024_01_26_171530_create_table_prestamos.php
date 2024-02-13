@@ -12,11 +12,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_prestamos', function (Blueprint $table) {
+        // Define el valor predeterminado para la fecha de devolución
+        $defaultDueDate = now()->addDays(3)->toDateTimeString();
+
+        Schema::create('table_prestamos', function (Blueprint $table) use ($defaultDueDate) {
             $table->id();
             $table->timestamp('fecha_prestamo')->nullable();
-            $table->timestamp('fecha_devolucion')->nullable()->default(DB::raw('DATE_ADD(NOW(), INTERVAL 3 DAY)'));
-            $table->timestamps(); 
+            $table->timestamp('fecha_devolucion')->nullable()->default($defaultDueDate);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->timestamps();
+            $table->index('id');
         });
     }
 

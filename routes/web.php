@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
 use App\Http\Controllers\Books\EditBookController;
+use App\Http\Controllers\Books\LoansController;
 use App\Http\Controllers\Users\UserListController;
 
 
@@ -44,8 +45,7 @@ Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libro
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
-//Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
-
+Route::post('/prestar-libro/{id}', [BookDetailController::class, 'prestarLibro'])->name('prestar-libro');
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
 Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('user.delete');

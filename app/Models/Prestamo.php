@@ -9,15 +9,23 @@ class Prestamo extends Model
 {
     use HasFactory;
 
+    protected $table = 'table_prestamos';
+
     protected $fillable = [
         'fecha_prestamo',
         'fecha_devolucion',
         'estado_id',
+        //'user_id',
     ];
 
     protected $primaryKey = 'id';
     
-    //Relaciones entre los modelos Book, state y notificaciones
+    //Relaciones entre los modelos User Book, state y notificaciones
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Assumiendo que la relación es de muchos préstamos a un usuario
+    }
+
     public function book()
     {
         return $this->belongsTo(Book::class, 'prestamo_id');

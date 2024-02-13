@@ -1,0 +1,6 @@
+.card {
+    margin-top: 10px;
+}
+.card-body {
+    background: rgba(255, 255, 255, 0.5); /* Blanco con 50% de transparencia */
+}

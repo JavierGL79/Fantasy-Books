@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userList.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
     
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -69,7 +70,7 @@
                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">{{__('Profile Management')}}</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Loans')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('loans.show') }}" id="UserLoans">{{__('Loans')}}</a>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Notifications')}}</a>
                                     
                                      <!-- Gestionar Catálogo de Libros -->

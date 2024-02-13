@@ -8,9 +8,12 @@
         <a href="#" onclick="history.back(); return false;" class="btn btn-danger" id="cancel">{{__($cancelButton ?? 'Cancel')}}</a>
             <!-- Muestra el botón de "Préstame el libro!" para usuarios autenticados-->
             @if(request()->is('books/*/edit') == false && isset($libro) && isset($libro->stock) && $libro->stock > 0)
-                <button class="btn btn-secondary" id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Préstame el libro!')}}</button>
+               <form method="POST" action="{{ route('prestar-libro', ['id' => $libro->id]) }}">
+                    @csrf
+                    <button class="btn btn-secondary" id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Préstame el libro!')}}</button>
+                </form>
             @endif
-            <!-- Incluir el layout delete_button -->
+
             <!-- Muestra el botón accesible para los bibliotecarios -->
             @if(Auth::user()->es_bibliotecario)
                 @include('layouts.deleteButton')
