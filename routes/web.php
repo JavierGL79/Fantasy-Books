@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Books\NewBookController;
 use App\Http\Controllers\Books\BookDetailController;
 use App\Http\Controllers\Books\EditBookController;
-use App\Http\Controllers\Books\LoansController;
+use App\Http\Controllers\Users\UserLoansController;
 use App\Http\Controllers\Users\UserListController;
 
 
@@ -36,8 +36,8 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
-Route::get('/userloans', [LoansController::class, 'show'])->name('userloans.show');
-Route::get('/allloans', [LoansController::class, 'show'])->name('allloans.show');
+Route::get('/userloans', [UserLoansController::class, 'show'])->name('userloans.show');
+Route::get('/allloans', [AllLoansController::class, 'show'])->name('allloans.show');
 
 //Route::get('/prestamos', [BibliotecarioController::class, 'prestamos'])->name('bibliotecario.loans');
 

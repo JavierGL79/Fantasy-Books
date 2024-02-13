@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Prestamo;
 use App\Models\User;
-use App\Models\Libro;
+use App\Models\Book;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Prestamo>
@@ -25,7 +25,7 @@ class PrestamoFactory extends Factory
             'fecha_prestamo' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'fecha_devolucion' => $this->faker->dateTimeBetween('now', '+1 month'),
             'user_id' => User::factory()->create()->id,
-            'libro_id' => Libro::factory()->create()->id,
+            'libro_id' => Book::factory()->create()->id,
         ];
     }
 }

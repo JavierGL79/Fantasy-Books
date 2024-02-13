@@ -21,6 +21,8 @@ return new class extends Migration
             $table->timestamp('fecha_devolucion')->nullable()->default($defaultDueDate);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('libro_id');
+            $table->foreign('libro_id')->references('id')->on('table_libros');
 
             $table->timestamps();
             $table->index('id');

@@ -15,7 +15,8 @@ class Prestamo extends Model
         'fecha_prestamo',
         'fecha_devolucion',
         'estado_id',
-        //'user_id',
+        'user_id',
+        'book_id'
     ];
 
     protected $primaryKey = 'id';
