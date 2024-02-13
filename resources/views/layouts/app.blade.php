@@ -70,7 +70,7 @@
                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">{{__('Profile Management')}}</a>
-                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('loans.show') }}" id="UserLoans">{{__('Loans')}}</a>
+                                    <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href="{{ route('userloans.show') }}" id="UserLoans">{{__('Loans')}}</a>
                                     <a class="dropdown-item dropdown-item:focus dropdown-item-custom" href=#>{{__('Notifications')}}</a>
                                     
                                      <!-- Gestionar Catálogo de Libros -->

@@ -6,7 +6,7 @@
     <div class="card-header">
         <h2 class="text-center">{{__('Loans Assets')}}</h2>
     </div>
-    <div class="card-body">
+    <div class="card-body opacity-50">
         @if($loans->isEmpty())
             <p class="text-center">{{__('No books are currently on loan')}}.</p>
         @else
@@ -14,7 +14,7 @@
                 @foreach($loans as $loan)
                     <li class="list-group-item {{ $loan->due_date < now() ? 'text-danger' : '' }}">
                         <div class="d-flex justify-content-between">
-                            <span>{{ $loan->book->title }}</span>
+                            <span>{{ $libro->book->title }}</span>
                             <span>{{ $loan->due_date->format('d/m/Y') }}</span>
                             @if($loan->fecha_devolucion->diffInDays($loan->fecha_prestamo) <= 3 && !$loan->extended)
                                 <button class="btn btn-primary" onclick="window.location.href='{{ route('loans.extend', $loan->id) }}'">{{__('Extend loan')}}</button>

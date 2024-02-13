@@ -15,8 +15,8 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
+<div class="card opacity-50">
+    <div class="card-header opacity-100">
         <h2 class="text-center">{{__('Search area')}}</h2>
     </div>
     <div class="card-body">

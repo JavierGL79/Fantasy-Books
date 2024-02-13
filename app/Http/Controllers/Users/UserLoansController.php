@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Books;
+namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use Illuminate\Support\Facades\Auth;
 
-class LoansController extends Controller
+class UserLoansController extends Controller
 {
     public function show()
     {
@@ -19,6 +19,6 @@ class LoansController extends Controller
         // Obtener todos los préstamos del usuario autenticado (independientemente de si han sido devueltos o no)
         $allLoans = Prestamo::where('user_id', Auth::id())->get();
 
-        return view('profiles.user_Loans', compact('loans', 'allLoans'));
+        return view('user.user_Loans', compact('loans', 'allLoans'));
     }
 }

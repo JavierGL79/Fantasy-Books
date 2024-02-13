@@ -36,7 +36,10 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profiles.
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
-Route::get('/loans', [LoansController::class, 'show'])->name('loans.show');
+Route::get('/userloans', [LoansController::class, 'show'])->name('userloans.show');
+Route::get('/allloans', [LoansController::class, 'show'])->name('allloans.show');
+
+//Route::get('/prestamos', [BibliotecarioController::class, 'prestamos'])->name('bibliotecario.loans');
 
 Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('books.BookPage');
 Route::get('/books/{id}/edit', [EditBookController::class, 'editDetail'])->name('books.EditBook');
@@ -46,6 +49,7 @@ Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('book
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
 Route::post('/prestar-libro/{id}', [BookDetailController::class, 'prestarLibro'])->name('prestar-libro');
+
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
 Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('user.delete');
