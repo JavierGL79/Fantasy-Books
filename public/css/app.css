@@ -71,3 +71,7 @@ body {
     background-color: lightgreen;
     color: #ffffff;
 }
+
+.pagination {
+    margin-top: 10px;
+}

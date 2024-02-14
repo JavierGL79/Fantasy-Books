@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        @isset($libro)
-            <h1>{{ $libro->titulo }}</h1>
-
+    @isset($libro)      
+        @section('card-header', $libro->titulo)        
+        @section('card-body')
             <div>
                 <strong>Autor:</strong> {{ $libro->autor }}
             </div>
@@ -20,14 +19,13 @@
             <div>
                 {{ $libro->foto }}
             </div>
-
             @php
                 $buttonText = 'Edit Book';
                 $cancelButton = 'Back';
             @endphp
-            @include('layouts.botonera', ['buttonText' => $buttonText, $cancelButton = 'Back'])
-        @else
+            @include('layouts.botonera', ['buttonText' => $buttonText, 'cancelButton' => 'Back'])
+            @else
             <p>{{__('The current book does not exist')}}</p>
-        @endisset
-    </div>
+            @endisset
+        @endsection
 @endsection

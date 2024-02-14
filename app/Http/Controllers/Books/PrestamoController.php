@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
+use App\Models\Book;
 use App\Events\LibroPrestado;
 
 class PrestamoController extends Controller

@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -109,8 +109,19 @@
             </div>
          @endif
         <main class="py-4">
+            <div class="card bg-light" style="--bs-bg-opacity: .5;">
+                <div class="card-header text-black bg-dark-subtle">
+                    <h2 class="text-center">@yield('card-header')</h2>
+                </div>
+                <div class="card-body text-black">
+                    @yield('card-body')
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
+    <footer>
+        Javier Girón López. Curso PHP - Laravez 2023-2024
+    </footer>
 </body>
 </html>
