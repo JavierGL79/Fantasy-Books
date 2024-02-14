@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('libros', 'App\Http\Controllers\Api\BookController');
+Route::apiResource('users', ApiUserController::class);
+
+//Route::apiResource('libros', 'App\Http\Controllers\Api\BookController');

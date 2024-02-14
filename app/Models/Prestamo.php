@@ -29,7 +29,7 @@ class Prestamo extends Model
 
     public function book()
     {
-        return $this->belongsTo(Book::class, 'prestamo_id');
+        return $this->belongsTo(Book::class, 'libro_id');
     }
 
     public function state()

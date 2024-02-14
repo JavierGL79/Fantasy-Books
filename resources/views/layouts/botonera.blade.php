@@ -10,7 +10,7 @@
             @if(request()->is('books/*/edit') == false && isset($libro) && isset($libro->stock) && $libro->stock > 0)
                <form method="POST" action="{{ route('prestar-libro', ['id' => $libro->id]) }}">
                     @csrf
-                    <button class="btn btn-secondary" id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Préstame el libro!')}}</button>
+                    <button class="btn btn-secondary" id="prestarLibro" data-libro-id="{{ $libro->id }}">{{__('Lend me the book, please')}}</button>
                 </form>
             @endif
 

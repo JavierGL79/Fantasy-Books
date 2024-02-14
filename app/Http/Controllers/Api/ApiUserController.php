@@ -11,8 +11,6 @@ class ApiUserController extends Controller
 {
     public function index()
     {
-        $user = User::all();
-        new UserCollection(User::all());
+        return new UserCollection(User::all());
     }
-
 }
