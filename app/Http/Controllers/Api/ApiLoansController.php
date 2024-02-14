@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserCollection;
-use App\Models\User;
+use App\Http\Resources\PrestamoCollection;
+use App\Models\Prestamo;
 use Illuminate\Http\Request;
 
-class ApiUserController extends Controller
+class ApiLoansController extends Controller
 {
     public function index()
     {
-        return new UserCollection(User::all());
+        return new PrestamoCollection(Prestamo::all());
     }
+
     //Agregar otros métodos para manejar las operaciones de la API, como DELETE, por ejemplo
 }

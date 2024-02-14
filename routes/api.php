@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiUserController;
 use App\Http\Controllers\Api\ApiBookController;
+use App\Http\Controllers\Api\ApiLoansController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('users', ApiUserController::class);
 
 Route::apiResource('books', ApiBookController::class);
+
+Route::apiResource('loans', ApiLoansController::class);
