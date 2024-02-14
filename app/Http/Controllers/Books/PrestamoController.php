@@ -2,41 +2,48 @@
 
 namespace App\Http\Controllers\Books;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use App\Models\Book;
-use App\Events\LibroPrestado;
+use Illuminate\Support\Facades\Auth;
+use App\Services\BooksService;
 
 class PrestamoController extends Controller
 {
-    public function prestarLibro($id)
+    public function __construct(BooksService $booksService)
+    {
+        $this->booksService = $booksService;
+    }
+
+    public function prestarLibro(Request $request, $id)
     {
         try {
             // Obtener el libro por su ID
-            $book = Books::findOrFail($id);
+            $libro = $this->booksService->bookDetail($id);
 
             // Verificar si hay stock disponible
-            if ($book->stock > 0) {
-                $book->decrement('stock'); // Reducir el stock en 1
+            if ($libro->stock > 0) {
+                $libro->decrement('stock'); // Reducir el stock en 1
 
                 // Registrar el préstamo
                 $prestamo = new Prestamo([
-                    'book_id' => $book->id,
-                    'user_id' => auth()->id(), // ID del usuario autenticado
+                    'book_id' => $libro->id,
+                    'user_id' => Auth::id(), // ID del usuario autenticado
                     'fecha_prestamo' => now(),
                 ]);
 
                 $prestamo->save();
 
                 // Mensaje de éxito
-                return response()->json(['message' => 'Libro prestado exitosamente'], 200);
+                return redirect()->back()->with('success', 'Libro prestado exitosamente');
             } else {
                 // Mensaje de error si no hay stock disponible
-                return response()->json(['message' => 'No hay stock disponible para prestar el libro'], 422);
+                return redirect()->back()->with('error', 'No hay stock disponible para prestar el libro');
             }
         } catch (\Exception $e) {
-            // Capturar excepciones y devolver un mensaje de error
-            return response()->json(['message' => 'Error al prestar el libro: ' . $e->getMessage()], 500);
+            // Capturar excepciones y redirigir con un mensaje de error
+            return redirect()->back()->with('error', 'Error al prestar el libro: ' . $e->getMessage());
         }
     }
 }

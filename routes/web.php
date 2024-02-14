@@ -8,7 +8,7 @@ use App\Http\Controllers\Books\BookDetailController;
 use App\Http\Controllers\Books\EditBookController;
 use App\Http\Controllers\Users\UserLoansController;
 use App\Http\Controllers\Users\UserListController;
-
+use App\Http\Controllers\Books\PrestamoController;
 
 
 use Illuminate\Support\Facades\Mail;
@@ -48,7 +48,7 @@ Route::get('/libros/nuevo', [NewBookController::class, 'showForm'])->name('libro
 Route::post('/books/store', [NewBookController::class, 'bookStore'])->name('books.store');
 Route::delete('/books/{id}', [BookDetailController::class, 'destroy'])->name('books.delete');
 
-Route::post('/prestar-libro/{id}', [BookDetailController::class, 'prestarLibro'])->name('prestar-libro');
+Route::post('/prestar-libro/{id}', [PrestamoController::class, 'prestarLibro'])->name('prestar-libro');
 
 
 Route::get('/usersList', [UserListController::class, 'index'])->name('users.UserList');
