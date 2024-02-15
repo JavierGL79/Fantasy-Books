@@ -61,10 +61,14 @@ class HomeController extends Controller
             }
 
             // Ejecuta la consulta y obtiene los resultados paginados
-            $libros = $query->orderBy('created_at', 'asc')->paginate(10);
+            $libros = $query->orderBy('created_at', 'asc')
+                            ->orderBy('titulo', 'asc')
+                            ->paginate(10);
         } else {
             // Si no se proporciona ningún criterio de búsqueda, muestra todos los libros
-            $libros = Book::orderBy('created_at', 'asc')->paginate(10);
+            $libros = Book::orderBy('created_at', 'asc')
+                        ->orderBy('titulo', 'asc')
+                        ->paginate(10);
         }
 
         // Retorna la vista con los libros y los valores de búsqueda

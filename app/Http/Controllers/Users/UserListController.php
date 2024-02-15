@@ -10,7 +10,7 @@ class UserListController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(25);
+        $users = User::orderBy('last_name')->paginate(20);
 
         return view('user.UserList', ['users' => $users]);
     }
