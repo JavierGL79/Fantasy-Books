@@ -11,7 +11,9 @@
             <li class="list-group-item">
                 <strong>{{__('Loan')}}:</strong> {{ $prestamo->id }}
                 <strong>{{__('User')}}:</strong> {{ $prestamo->user->name }}
-                <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}
+                <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}<br>
+                <strong>{{__('Date of loan')}}:</strong> {{ $prestamo->fecha_prestamo }}
+                <strong>{{__('Date of return')}}:</strong> {{ $prestamo->fecha_devolucion }}
                 <strong>{{__('Return status')}}: </strong><strong class="{{ $prestamo->devuelto ? 'text-success' : 'text-danger' }}">{{ $prestamo->devuelto ? 'Devuelto' : 'Sin Devolver' }}</strong>
                 <div class="button-container">
                     <!-- Botón para devolver el libro -->

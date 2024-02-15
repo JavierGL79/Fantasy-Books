@@ -38,13 +38,14 @@ class UserLoansController extends Controller
     public function ampliarPrestamo($id)
     {
         $prestamo = Prestamo::find($id);
-        $prestamo->fecha_devolucion = $prestamo->fecha_devolucion->addDays(3);
+        $fecha_devolucion = \Carbon\Carbon::parse($prestamo->fecha_devolucion);
+        $prestamo->fecha_devolucion = $fecha_devolucion->addDays(3);
         $prestamo->ampliado = true;
         $prestamo->save();
-
+    
         // Almacenar un mensaje flash en la sesión
         session()->flash('message', 'Préstamo ampliado con éxito');
-
+    
         return redirect()->back();
     }
 }

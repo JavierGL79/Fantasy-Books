@@ -103,11 +103,15 @@
                 </div>
             </div>
         </nav>
-        @if(Auth::check() && Session::get('show_welcome_message', true))
-            <div class="card text-center totalSuccess" id="success-panel" class="alert alert-success mb-0">            
-                {{__('Welcome')}} {{ Auth::user()->username }}. {{ __('You are logged in!') }}
-            </div>
-         @endif
+        <div id="mensajes">
+        @if (session('just_logged_in'))
+        <div class="card text-center totalSuccess" id="success-panel" class="alert alert-success mb-0">
+            {{__('Welcome')}} {{ Auth::user()->username }}. {{ __('You are logged in!') }}
+        </div>
+        <!-- Elimina el valor 'just_logged_in' de la sesión -->
+        {{ session()->forget('just_logged_in') }}
+    @endif
+        </div>
         <main class="py-4">
             <div class="card bg-light" style="--bs-bg-opacity: .5;">
                 <div class="card-header text-black bg-dark-subtle">
