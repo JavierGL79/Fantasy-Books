@@ -15,7 +15,7 @@
         @endif
         <p><strong>Email:</strong> {{ $user->email }}</p>
         <div class="text-center">
-            <a href="{{ route('profiles.profile_edit') }}" class="btn btn-primary">Edit Profile</a>
+            <a href="{{ route('user.profile_edit') }}" class="btn btn-primary">{{__('Edit Profile')}}</a>
         </div>
     </div>
     @include('layouts.botonera')
