@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('libro_id')->references('id')->on('table_libros');
             $table->boolean('devuelto')->default(true);
             $table->boolean('ampliado')->default(false);
-
+            $table->boolean('notificacion_enviada')->default(false);
             $table->timestamps();
             $table->index('id');
         });

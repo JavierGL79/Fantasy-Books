@@ -19,7 +19,8 @@ class Prestamo extends Model
         'user_id',
         'libro_id',
         'devuelto',
-        'ampliado'
+        'ampliado',
+        'notificacion_enviada',
     ];
 
     protected $primaryKey = 'id';

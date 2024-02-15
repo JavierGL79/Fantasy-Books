@@ -20,7 +20,10 @@ class UserLoansController extends Controller
 
         foreach ($prestamosVencidos as $prestamo) {
             event(new PrestamoFinalizadoEvent($prestamo));
+            $prestamo->notificacion_enviada = true;
+            $prestamo->save();
         }
+        
         $prestamosActivos = Prestamo::with('user', 'book')
             ->where('user_id', Auth::id())
             ->whereDate('fecha_devolucion', '>', Carbon::now())
