@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h1>{{ __('Edit Book') }}</h1>
+        @section('card-header')
+                    
+                    {{ $libro->titulo}}
                 </div>
 
                 @if(isset($status) && $status === 'success')
