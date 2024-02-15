@@ -9,6 +9,7 @@ use App\Http\Controllers\Books\EditBookController;
 use App\Http\Controllers\Users\UserLoansController;
 use App\Http\Controllers\Users\UserListController;
 use App\Http\Controllers\Books\PrestamoController;
+use App\Http\Controllers\Books\AllLoansController;
 
 
 use Illuminate\Support\Facades\Mail;
@@ -37,9 +38,9 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 
 
 Route::get('/userloans', [UserLoansController::class, 'show'])->name('userloans.show');
-Route::get('/allloans', [AllLoansController::class, 'show'])->name('allloans.show');
+Route::get('/allloans', [AllLoansController::class, 'show'])->name('books.AllLoans');
 
-//Route::get('/prestamos', [BibliotecarioController::class, 'prestamos'])->name('bibliotecario.loans');
+
 
 Route::get('/books/{id}', [BookDetailController::class, 'showDetail'])->name('books.BookPage');
 Route::get('/books/{id}/edit', [EditBookController::class, 'editDetail'])->name('books.EditBook');

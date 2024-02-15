@@ -15,7 +15,7 @@
                     <li class="list-group-item {{ $loan->due_date < now() ? 'text-danger' : '' }}">
                         <div class="d-flex justify-content-between">
                             <span>{{ $loan->id }}</span>
-                            
+                            <span>{{ $loan->book->title }}</span> <!-- Aquí se agrega el título del libro -->
                             @if($loan->fecha_devolucion->diffInDays($loan->fecha_prestamo) <= 3 && !$loan->extended)
                                 <button class="btn btn-primary" onclick="window.location.href='{{ route('loans.extend', $loan->id) }}'">{{__('Extend loan')}}</button>
                             @endif
@@ -39,8 +39,8 @@
                 @foreach($allLoans as $loan)
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between">
-                            <span>{{ $loan->id }}</span> id PRÉSTAMOS
-                            
+                            <span>{{ $loan->id }}</span> <!-- ID PRÉSTAMOS -->
+                            <span>{{ $loan->book->title }}</span>TITULO DEL LIBRO <!-- Título del libro -->
                         </div>
                     </li>
                 @endforeach

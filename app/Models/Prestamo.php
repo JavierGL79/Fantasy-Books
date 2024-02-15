@@ -16,7 +16,7 @@ class Prestamo extends Model
         'fecha_devolucion',
         'estado_id',
         'user_id',
-        'book_id'
+        'libro_id'
     ];
 
     protected $primaryKey = 'id';
@@ -24,7 +24,7 @@ class Prestamo extends Model
     //Relaciones entre los modelos User Book, state y notificaciones
     public function user()
     {
-        return $this->belongsTo(User::class); // Assumiendo que la relación es de muchos préstamos a un usuario
+        return $this->belongsTo(User::class);
     }
 
     public function book()

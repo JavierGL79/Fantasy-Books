@@ -14,6 +14,7 @@ class UserLoansController extends Controller
         // Obtener todos los préstamos activos del usuario autenticado
         $loans = Prestamo::where('user_id', Auth::id())
             ->whereNull('fecha_devolucion') // Préstamos que aún no han sido devueltos
+            ->with('book')
             ->get();
 
         // Obtener todos los préstamos del usuario autenticado (independientemente de si han sido devueltos o no)
