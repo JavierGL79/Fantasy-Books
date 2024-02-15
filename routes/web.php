@@ -39,7 +39,7 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 
 Route::get('/userloans', [UserLoansController::class, 'show'])->name('userloans.show');
 Route::get('/allloans', [AllLoansController::class, 'show'])->name('books.AllLoans');
-Route::post('/prestamo/{id}/devolver', [UserLoanController::class, 'devolverLibro'])->name('devolver-libro');
+Route::post('/prestamo/{id}/devolver', [UserLoansController::class, 'devolverLibro'])->name('devolver-libro');
 Route::post('/prestamo/{id}/ampliar', [UserLoansController::class, 'ampliarPrestamo'])->name('ampliar-prestamo');
 
 

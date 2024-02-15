@@ -27,14 +27,17 @@ class UserLoansController extends Controller
     }
 
     public function devolverLibro($id)
-    {
-        $prestamo = Prestamo::find($id);
-        $prestamo->devuelto = true;
-        $prestamo->save();
+{
+    $prestamo = Prestamo::find($id);
+    $prestamo->devuelto = true;
+    $prestamo->fecha_devolucion = now(); // Actualiza la fecha de devolución al momento actual
+    $prestamo->save();
 
-        return redirect()->back();
-    }
+    // Almacenar un mensaje flash en la sesión
+    session()->flash('message', 'Libro devuelto con éxito');
 
+    return redirect()->back();
+}
     public function ampliarPrestamo($id)
     {
         $prestamo = Prestamo::find($id);
