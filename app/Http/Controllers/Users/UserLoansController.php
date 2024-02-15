@@ -6,21 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class UserLoansController extends Controller
 {
     public function show()
     {
-        // Obtener todos los préstamos activos del usuario autenticado
-        $loans = Prestamo::where('user_id', Auth::id())
-            ->whereNull('fecha_devolucion') // Préstamos que aún no han sido devueltos
-            ->with('book')
-            ->get();
+        $prestamosActivos = Prestamo::with('user', 'book')
+        ->where('user_id', Auth::id())
+        ->whereDate('fecha_devolucion', '>', Carbon::now())
+        ->get();
 
-        // Obtener todos los préstamos del usuario autenticado (independientemente de si han sido devueltos o no)
-        $allLoans = Prestamo::where('user_id', Auth::id())->get();
+    // Aquí recuperas todos los préstamos inactivos del usuario autenticado
+    $prestamosInactivos = Prestamo::with('user', 'book')
+        ->where('user_id', Auth::id())
+        ->whereDate('fecha_devolucion', '<=', Carbon::now())
+        ->get();
 
-        return view('user.user_Loans', compact('loans', 'allLoans'));
+    return view('books.AllLoans', ['prestamosActivos' => $prestamosActivos, 'prestamosInactivos' => $prestamosInactivos]);
     }
 
     public function prolongarPrestamo($id)
