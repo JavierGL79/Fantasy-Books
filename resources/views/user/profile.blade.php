@@ -2,11 +2,11 @@
 
 @section('content')
 @if(auth()->check())
-<div class="card">
-    <div class="card-header">
-        <h1 class="text-center">Gestión del perfil de usuario
-        <p>ID del usuario: {{ auth()->user()->id }}</p>
-        </h1>
+
+    @section('card-header', 'Gestión del perfil de usuario')   
+        {{ auth()->user()->iusername }}
+    @endsection
+    @section('card-body')
     </div>    
     <div class="card-body">
         <p><strong>{{__('User Name')}}:</strong> {{ $user->username }}</p>
