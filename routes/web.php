@@ -10,6 +10,7 @@ use App\Http\Controllers\Users\UserLoansController;
 use App\Http\Controllers\Users\UserListController;
 use App\Http\Controllers\Books\PrestamoController;
 use App\Http\Controllers\Books\AllLoansController;
+use App\Http\Controllers\Users\UserProfileController;
 
 
 use Illuminate\Support\Facades\Mail;
@@ -34,7 +35,8 @@ Auth::routes();
 
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 //Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('user.profile_edit')->middleware('auth');
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+//Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::get('/user/edition', [UserProfileController::class, 'edit'])->name('user.edition');
 
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('user.update')->middleware('auth');
 

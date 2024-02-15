@@ -16,12 +16,9 @@
             <p><strong>{{__('Last Name 2')}}:</strong> {{ $user->last_name_2 }}</p>
         @endif
         <p><strong>Email:</strong> {{ $user->email }}</p>
-        <div class="text-center">
-        @can('update', $user)
-        <a href="{{ route('profile.edit') }}" class="btn btn-primary">{{__('Edit Profile')}}</a>
-        @endcan
-        </div>
     </div>
+    <a href="{{ route('user.edition') }}" class="btn btn-primary">Pamplinas</a>
+
     @include('layouts.botonera')
 
 </div>
