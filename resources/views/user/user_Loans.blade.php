@@ -39,8 +39,8 @@
                 @foreach($allLoans as $loan)
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between">
-                            <span>{{ $loan->id }}</span> <!-- ID PRÉSTAMOS -->
-                            <span>{{ $loan->book->title }}</span>TITULO DEL LIBRO <!-- Título del libro -->
+                            <span>{{ $loan->id }}</span> 
+                            <span>{{ $loan->book->titulo }}</span>
                         </div>
                     </li>
                 @endforeach
