@@ -1,42 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    @section('card-header', 'Active Loans')
+    @section('card-header')
+        {{ __('Active Loans') }}
+    @endsection
     @section('card-body')
         <ul class="list-group">
             @foreach ($prestamosActivos as $prestamo)
-                <div class="card">
-                    <div class="card-body">
-                        <li class="list-group-item">
-                            <strong>{{__('Loan')}}:</strong> {{ $prestamo->id }}
-                            <strong>{{__('User')}}:</strong> {{ $prestamo->user->name }}
-                            <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}
-                            <!-- Botón para devolver el libro -->
-                            <form action="{{ route('devolver-libro', $prestamo->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Devolver libro</button>
-                            </form>
-                            <h2>Préstamos Activos</h2>
-@foreach ($prestamosActivos as $prestamo)
-<div class="card">
-    <div class="card-body">
-        <li class="list-group-item">
-            <strong>Préstamo:</strong> {{ $prestamo->id }}<br>
-            <strong>Usuario:</strong> {{ $prestamo->user->name }}<br>
-            <strong>Libro:</strong> {{ $prestamo->book->titulo }}<br>
-            <!-- Botón para devolver el libro -->
-            <form action="{{ route('devolver-libro', $prestamo->id) }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-primary">Devolver libro</button>
-            </form>
-        </li>
-    </div> 
-</div> 
-@endforeach
 
-                        </li>
-                    </div> 
-                </div> 
+            <li class="list-group-item">
+                <strong>{{__('Loan')}}:</strong> {{ $prestamo->id }}
+                <strong>{{__('User')}}:</strong> {{ $prestamo->user->name }}
+                <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}
+                <strong>{{__('Return status')}}: </strong><strong class="{{ $prestamo->devuelto ? 'text-success' : 'text-danger' }}">{{ $prestamo->devuelto ? 'Devuelto' : 'Sin Devolver' }}</strong>
+                <div class="button-container">
+                    <!-- Botón para devolver el libro -->
+                    <form action="{{ route('devolver-libro', $prestamo->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Devolver libro</button>
+                    </form>
+                    <!-- Botón para ampliar préstamo -->
+                    @if (!$prestamo->devuelto && now() < $prestamo->fecha_devolucion && !$prestamo->ampliado)
+                    <form action="{{ route('ampliar-prestamo', $prestamo->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary">Ampliar préstamo</button>
+                    </form>
+                    @endif
+                </div>
+            </li>
             @endforeach
         </ul>
     @endsection
@@ -51,6 +42,7 @@
                     <strong>{{__('Loan')}}:</strong> {{ $prestamo->id }}
                     <strong>{{__('User')}}:</strong> {{ $prestamo->user->name }}
                     <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}
+                    <strong>{{__('Return status')}}: </strong><strong class="{{ $prestamo->devuelto ? 'text-success' : 'text-danger' }}">{{ $prestamo->devuelto ? 'Devuelto' : 'Sin Devolver' }}</strong>
 
                 </li>
                 @endforeach

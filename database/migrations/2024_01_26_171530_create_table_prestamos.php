@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('libro_id');
             $table->foreign('libro_id')->references('id')->on('table_libros');
+            $table->boolean('devuelto')->default(true);
+            $table->boolean('ampliado')->default(false);
 
             $table->timestamps();
             $table->index('id');

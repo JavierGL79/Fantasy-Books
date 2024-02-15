@@ -17,7 +17,9 @@ class Prestamo extends Model
         'fecha_devolucion',
         'estado_id',
         'user_id',
-        'libro_id'
+        'libro_id',
+        'devuelto',
+        'ampliado'
     ];
 
     protected $primaryKey = 'id';
@@ -31,11 +33,6 @@ class Prestamo extends Model
     public function book()
     {
         return $this->belongsTo(Book::class, 'libro_id');
-    }
-
-    public function state()
-    {
-        return $this->belongsTo(State::class, 'estado_id');
     }
 
     public function notificaciones()

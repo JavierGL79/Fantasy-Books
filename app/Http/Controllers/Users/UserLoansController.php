@@ -17,7 +17,7 @@ class UserLoansController extends Controller
         ->whereDate('fecha_devolucion', '>', Carbon::now())
         ->get();
 
-    // Aquí recuperas todos los préstamos inactivos del usuario autenticado
+    // Recuperar todos los préstamos inactivos del usuario autenticado
     $prestamosInactivos = Prestamo::with('user', 'book')
         ->where('user_id', Auth::id())
         ->whereDate('fecha_devolucion', '<=', Carbon::now())
@@ -26,24 +26,25 @@ class UserLoansController extends Controller
     return view('books.AllLoans', ['prestamosActivos' => $prestamosActivos, 'prestamosInactivos' => $prestamosInactivos]);
     }
 
-    public function prolongarPrestamo($id)
+    public function devolverLibro($id)
     {
-        $loan = Prestamo::find($id);
+        $prestamo = Prestamo::find($id);
+        $prestamo->devuelto = true;
+        $prestamo->save();
 
-        if (!$loan) {
-            return redirect()->back()->with('error', 'Loan not found');
-        }
+        return redirect()->back();
+    }
 
-        if ($loan->extended) {
-            return redirect()->back()->with('error', 'Loan has already been extended');
-        }
+    public function ampliarPrestamo($id)
+    {
+        $prestamo = Prestamo::find($id);
+        $prestamo->fecha_devolucion = $prestamo->fecha_devolucion->addDays(3);
+        $prestamo->ampliado = true;
+        $prestamo->save();
 
-        // Puedes ajustar la lógica de prolongación aquí según tus requerimientos
-        $loan->update([
-            'extended' => true,
-            'extended_at' => Carbon::now(), // Esto registra la fecha en la que se extendió el préstamo
-        ]);
+        // Almacenar un mensaje flash en la sesión
+        session()->flash('message', 'Préstamo ampliado con éxito');
 
-        return redirect()->back()->with('success', 'Loan extended successfully');
+        return redirect()->back();
     }
 }
