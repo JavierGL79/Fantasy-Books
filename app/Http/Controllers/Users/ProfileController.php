@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Users;
+
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,18 +16,18 @@ class ProfileController extends Controller
             // Verifica si el usuario existe
             if (!$user) {
             // Si el usuario no existe, redirige o muestra un error
-            return redirect()->route('/')->with('error', 'Usuario no encontrado');
+            return redirect()->route('welcome')->with('error', 'Usuario no encontrado');
             }
 
             // Muestra la vista del perfil del usuario encontrado
-            return view('profiles.profile', compact('user'));
+            return view('user.profile', compact('user'));
         }
 
     public function edit()
         {
             // Lógica para mostrar el formulario de edición del perfil
             $user = auth()->user();
-            return view('profiles.profile_edit', compact('user'));
+            return view('user.profile_edit', compact('user'));
         }
 
     public function update(Request $request)
