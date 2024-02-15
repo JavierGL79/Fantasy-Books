@@ -120,7 +120,7 @@
             @yield('content')
         </main>
     </div>
-    <footer>
+    <footer class="text-light text-center">
         Javier Girón López. Curso PHP - Laravez 2023-2024
     </footer>
 </body>

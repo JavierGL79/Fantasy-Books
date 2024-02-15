@@ -22,4 +22,25 @@ class UserLoansController extends Controller
 
         return view('user.user_Loans', compact('loans', 'allLoans'));
     }
+
+    public function prolongarPrestamo($id)
+    {
+        $loan = Prestamo::find($id);
+
+        if (!$loan) {
+            return redirect()->back()->with('error', 'Loan not found');
+        }
+
+        if ($loan->extended) {
+            return redirect()->back()->with('error', 'Loan has already been extended');
+        }
+
+        // Puedes ajustar la lógica de prolongación aquí según tus requerimientos
+        $loan->update([
+            'extended' => true,
+            'extended_at' => Carbon::now(), // Esto registra la fecha en la que se extendió el préstamo
+        ]);
+
+        return redirect()->back()->with('success', 'Loan extended successfully');
+    }
 }

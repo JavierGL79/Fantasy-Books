@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="card">
+<div class="card" id="active-loans">
     <div class="card-header">
         <h2 class="text-center">{{__('Loans Assets')}}</h2>
     </div>
@@ -15,10 +15,24 @@
                     <li class="list-group-item {{ $loan->due_date < now() ? 'text-danger' : '' }}">
                         <div class="d-flex justify-content-between">
                             <span>{{ $loan->id }}</span>
-                            <span>{{ $loan->book->title }}</span> <!-- Aquí se agrega el título del libro -->
-                            @if($loan->fecha_devolucion->diffInDays($loan->fecha_prestamo) <= 3 && !$loan->extended)
-                                <button class="btn btn-primary" onclick="window.location.href='{{ route('loans.extend', $loan->id) }}'">{{__('Extend loan')}}</button>
-                            @endif
+                            <span>{{ $loan->book->titulo }}</span> <!-- Se muestra el título del libro -->
+                            
+                                <div>
+                                    <!-- Botón para devolver el préstamo -->
+                                    <form action="{{ route('devolver-prestamo', $loan->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">{{__('Return')}}</button>
+                                    </form>
+                                    <!-- Botón para prolongar el préstamo -->
+                                    @if(!$loan->extended)
+                                        <form action="{{ route('prolongar-prestamo', $loan->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">{{__('Extend loan')}}</button>
+                                        </form>
+                                    @else
+                                        <span>{{__('Loan cannot be extended further')}}</span>
+                                    @endif
+                                </div>  
                         </div>
                     </li>
                 @endforeach
@@ -31,7 +45,7 @@
     <div class="card-header">
         <h2 class="text-center">{{__('Loan Register')}}</h2>
     </div>
-    <div class="card-body">
+    <div class="card-body justify-content-start">
         @if($allLoans->isEmpty())
             <p class="text-center">{{__('No previous loans found')}}.</p>
         @else
@@ -49,4 +63,4 @@
     </div>
 </div>
 
-@endsection;
+@endsection
