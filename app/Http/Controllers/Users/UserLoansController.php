@@ -13,7 +13,8 @@ class UserLoansController extends Controller
 {
     public function show()
     {
-        // Comprueba los préstamos vencidos y disparar el evento
+        
+        // Comprueba los préstamos vencidos y dispara el evento
         $prestamosVencidos = Prestamo::whereDate('fecha_devolucion', '<', now())
         ->where('devuelto', 0)
         ->get();
