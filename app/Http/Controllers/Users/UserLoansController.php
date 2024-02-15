@@ -7,11 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Events\PrestamoFinalizadoEvent;
 
 class UserLoansController extends Controller
 {
     public function show()
     {
+        // Comprueba los préstamos vencidos y disparar el evento
+        $prestamosVencidos = Prestamo::whereDate('fecha_devolucion', '<', now())
+        ->where('devuelto', 0)
+        ->get();
+
+        foreach ($prestamosVencidos as $prestamo) {
+            event(new PrestamoFinalizadoEvent($prestamo));
+        }
         $prestamosActivos = Prestamo::with('user', 'book')
             ->where('user_id', Auth::id())
             ->whereDate('fecha_devolucion', '>', Carbon::now())
