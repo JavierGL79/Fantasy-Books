@@ -30,9 +30,9 @@ class EditBookController extends Controller
                 'titulo' => 'required|string',
                 'year' => 'required|integer',
                 'editorial' => 'required|string',
-                'stock' => 'integer',
-                'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Ejemplo de validación para la foto
-                'information' =>'string',
+                'stock' => 'nullable|integer',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Ejemplo de validación para la foto
+                'information' =>'nullable|string',
             ]);
             
             // Obtener el libro a actualizar utilizando el BooksService
@@ -41,11 +41,15 @@ class EditBookController extends Controller
             // Actualiza los campos del libro con los datos del formulario
             $libro->update($request->all());
 
-            // Mensajes de depuración
-            dd('Libro actualizado correctamente', $libro, $request->all());
+            if ($request->hasFile('foto')) {
+                // Almacenar la nueva foto y actualizar la ruta en la base de datos
+                $fotoPath = $request->file('foto')->store('public/fotos');
+                $libro->foto = Storage::url($fotoPath);
+                $libro->save();
 
             // Redirecciona al detalle del libro con un mensaje de éxito
             return redirect()->route('books.BookPage', $libro->id)->with('success', 'Libro actualizado correctamente');
 
         }
+    }
 }

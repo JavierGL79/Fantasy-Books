@@ -21,7 +21,7 @@
                     @csrf
 
                     <div class="col-md-6 offset-md-4 text-center">
-                        <button type="submit" class="btn btn-primary">"{{__('Register New Book')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Register New Book')}}</button>
                     </div>
                 </form>       
                 @endif
