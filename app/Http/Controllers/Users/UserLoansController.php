@@ -13,17 +13,17 @@ class UserLoansController extends Controller
     public function show()
     {
         $prestamosActivos = Prestamo::with('user', 'book')
-        ->where('user_id', Auth::id())
-        ->whereDate('fecha_devolucion', '>', Carbon::now())
-        ->get();
+            ->where('user_id', Auth::id())
+            ->whereDate('fecha_devolucion', '>', Carbon::now())
+            ->paginate(10);
 
-    // Recuperar todos los préstamos inactivos del usuario autenticado
-    $prestamosInactivos = Prestamo::with('user', 'book')
-        ->where('user_id', Auth::id())
-        ->whereDate('fecha_devolucion', '<=', Carbon::now())
-        ->get();
+        // Recupera todos los préstamos inactivos del usuario autenticado
+        $prestamosInactivos = Prestamo::with('user', 'book')
+            ->where('user_id', Auth::id())
+            ->whereDate('fecha_devolucion', '<=', Carbon::now())
+            ->paginate(10);
 
-    return view('books.AllLoans', ['prestamosActivos' => $prestamosActivos, 'prestamosInactivos' => $prestamosInactivos]);
+        return view('books.AllLoans', ['prestamosActivos' => $prestamosActivos, 'prestamosInactivos' => $prestamosInactivos]);
     }
 
     public function devolverLibro($id)

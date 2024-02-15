@@ -32,6 +32,7 @@
             </li>
             @endforeach
         </ul>
+        {{$prestamosActivos->links()}}
     @endsection
     <div class="card bg-light" style="--bs-bg-opacity: .5;">
         <div class="card-header text-black bg-dark-subtle">
@@ -45,10 +46,11 @@
                     <strong>{{__('User')}}:</strong> {{ $prestamo->user->name }}
                     <strong>{{__('Book')}}:</strong> {{ $prestamo->book->titulo }}
                     <strong>{{__('Return status')}}: </strong><strong class="{{ $prestamo->devuelto ? 'text-success' : 'text-danger' }}">{{ $prestamo->devuelto ? 'Devuelto' : 'Sin Devolver' }}</strong>
-
                 </li>
                 @endforeach
             </ul>
         </div>
+        {{$prestamosInactivos->links()}}
     </div>
+    
 @endsection
