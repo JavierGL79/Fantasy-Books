@@ -6,3 +6,13 @@
 .card-body {
     color:aliceblue;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+li strong {
+    margin-bottom: 5px;
+}

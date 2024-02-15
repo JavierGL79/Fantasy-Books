@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers\Books;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Prestamo;
+use Carbon\Carbon;
 
 class AllLoansController extends Controller
 {
-    public function prestamos()
+    public function show()
     {
-        // Aquí recuperas todos los préstamos y los libros asociados
-        $prestamos = Prestamo::with('user', 'libro')->get();
+        // Recuperar todos los préstamos y los libros asociados
+        $prestamosActivos = Prestamo::with('user', 'book')
+            ->whereDate('fecha_devolucion', '>', Carbon::now())
+            ->paginate(10);
 
-        return view('bibliotecario.loans', ['prestamos' => $prestamos]);
+        $prestamosInactivos = Prestamo::with('user', 'book')
+            ->whereDate('fecha_devolucion', '<=', Carbon::now())
+            ->paginate(10);
+
+        return view('books.AllLoans', ['prestamosActivos' => $prestamosActivos, 'prestamosInactivos' => $prestamosInactivos]);
     }
+
 }

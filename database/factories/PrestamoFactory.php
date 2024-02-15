@@ -21,11 +21,20 @@ class PrestamoFactory extends Factory
 
     public function definition(): array
     {
-        return [
-            'fecha_prestamo' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'fecha_devolucion' => $this->faker->dateTimeBetween('now', '+1 month'),
-            'user_id' => User::factory()->create()->id,
-            'libro_id' => Book::factory()->create()->id,
-        ];
+
+        $fecha_prestamo = $this->faker->dateTimeBetween('-1 year', 'now');
+        $ampliado = $this->faker->boolean(25); // 25% de probabilidad de que sea true
+        $fecha_devolucion = $ampliado ? $fecha_prestamo->modify('+6 days') : $fecha_prestamo->modify('+3 days');
+        $notificacion_enviada = $this->faker->boolean(50); // 50% de probabilidad de que sea true
+
+    return [
+        'fecha_prestamo' => $fecha_prestamo,
+        'fecha_devolucion' => $fecha_devolucion,
+        'user_id' => User::factory()->create()->id,
+        'libro_id' => Book::factory()->create()->id,
+        'devuelto' => $this->faker->boolean(75), // 75% de probabilidad de que sea true
+        'ampliado' => $ampliado,
+        'notificacion_enviada' => $notificacion_enviada,
+    ];
     }
 }

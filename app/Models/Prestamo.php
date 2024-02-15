@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Prestamo extends Model
 {
     use HasFactory;
@@ -16,7 +17,10 @@ class Prestamo extends Model
         'fecha_devolucion',
         'estado_id',
         'user_id',
-        'book_id'
+        'libro_id',
+        'devuelto',
+        'ampliado',
+        'notificacion_enviada',
     ];
 
     protected $primaryKey = 'id';
@@ -24,17 +28,12 @@ class Prestamo extends Model
     //Relaciones entre los modelos User Book, state y notificaciones
     public function user()
     {
-        return $this->belongsTo(User::class); // Assumiendo que la relación es de muchos préstamos a un usuario
+        return $this->belongsTo(User::class);
     }
 
     public function book()
     {
         return $this->belongsTo(Book::class, 'libro_id');
-    }
-
-    public function state()
-    {
-        return $this->belongsTo(State::class, 'estado_id');
     }
 
     public function notificaciones()
