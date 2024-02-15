@@ -73,7 +73,7 @@
                             $buttonText = 'Register New Book';
                         @endphp
                         @include('layouts.botonera', ['buttonText' => $buttonText])
-                    </form>
+
                 </div>
             </div>
         </div>

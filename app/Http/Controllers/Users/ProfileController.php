@@ -14,10 +14,10 @@ class ProfileController extends Controller
             $user = User::find($id);
 
             // Verifica si el usuario existe
-            if (!$user) {
+            /*if (!$user) {
             // Si el usuario no existe, redirige o muestra un error
             return redirect()->route('welcome')->with('error', 'Usuario no encontrado');
-            }
+            }*/
 
             // Muestra la vista del perfil del usuario encontrado
             return view('user.profile', compact('user'));
@@ -25,9 +25,12 @@ class ProfileController extends Controller
 
     public function edit()
         {
-            // Lógica para mostrar el formulario de edición del perfil
             $user = auth()->user();
-            return view('user.profile_edit', compact('user'));
+
+            // Verifica la política de edición
+            $this->authorize('update', $user);
+        
+            return view('editProfile', compact('user'));
         }
 
     public function update(Request $request)

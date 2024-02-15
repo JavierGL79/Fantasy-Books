@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if(auth()->check())
 <div class="card">
     <div class="card-header">
-        <h1 class="text-center">Gestión del perfil de usuario</h1>
+        <h1 class="text-center">Gestión del perfil de usuario
+        <p>ID del usuario: {{ auth()->user()->id }}</p>
+        </h1>
     </div>    
     <div class="card-body">
         <p><strong>{{__('User Name')}}:</strong> {{ $user->username }}</p>
@@ -15,10 +17,16 @@
         @endif
         <p><strong>Email:</strong> {{ $user->email }}</p>
         <div class="text-center">
-            <a href="{{ route('user.profile_edit') }}" class="btn btn-primary">{{__('Edit Profile')}}</a>
+        @can('update', $user)
+        <a href="{{ route('profile.edit') }}" class="btn btn-primary">{{__('Edit Profile')}}</a>
+        @endcan
         </div>
     </div>
     @include('layouts.botonera')
 
 </div>
+@else
+    <!-- El usuario no está autenticado -->
+    <p>Por favor, inicia sesión para ver esta página.</p>
+@endif
 @endsection

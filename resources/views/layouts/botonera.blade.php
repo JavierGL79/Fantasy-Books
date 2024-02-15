@@ -16,6 +16,16 @@
 
             <!-- Muestra el botón accesible para los bibliotecarios -->
             @if(Auth::user()->es_bibliotecario)
+                @if(request()->is('libros/nuevo'))
+                <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="col-md-6 offset-md-4 text-center">
+                        <button type="submit" class="btn btn-primary">"{{__('Register New Book')}}</button>
+                    </div>
+                </form>       
+                @endif
+
                 @include('layouts.deleteButton')
                 @if(isset($libro))
                     @can('editBook', $libro)
