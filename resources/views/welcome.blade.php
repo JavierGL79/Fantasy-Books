@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container" id="notice">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -15,11 +16,10 @@
         </div>
     </div>
 
-    <div class="card bg-light" style="--bs-bg-opacity: .5;">
-        <div class="card-header text-black bg-dark-subtle">
-            <h2 class="text-center">{{__('Search area')}}</h2>
-        </div>
-        <div class="card-body text-black">
+    @section('card-header')
+            {{__('Search area')}}
+    @endsection
+    @section('card-body')
             <form action="{{ url('/') }}" method="GET" class="text-center" style="max-width: 50%; margin: auto;">
 
                 <div class="card-body">
@@ -53,8 +53,7 @@
                     <button class="btn btn-primary" type="submit">{{__('Search books')}}</button>
                 </div>
             </form>
-        </div>
-    </div>
+    @endsection
 
     <div class="card bg-light" style="--bs-bg-opacity: .5;">
         <div class="card-header text-black bg-dark-subtle">
