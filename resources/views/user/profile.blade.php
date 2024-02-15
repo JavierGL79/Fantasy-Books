@@ -16,8 +16,8 @@
             <p><strong>{{__('Last Name 2')}}:</strong> {{ $user->last_name_2 }}</p>
         @endif
         <p><strong>Email:</strong> {{ $user->email }}</p>
+        <a href="{{ route('user.edition', ['id' => $user->id]) }}" class="btn btn-primary">{{__('Profile Management')}}</a>
     </div>
-    <a href="{{ route('user.edition') }}" class="btn btn-primary">Pamplinas</a>
 
     @include('layouts.botonera')
 

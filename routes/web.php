@@ -34,11 +34,8 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
-//Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('user.profile_edit')->middleware('auth');
-//Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::get('/user/edition', [UserProfileController::class, 'edit'])->name('user.edition');
-
-Route::patch('/profile/update', [ProfileController::class, 'update'])->name('user.update')->middleware('auth');
+Route::patch('/profile/update', [UserProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 
 Route::get('/userloans', [UserLoansController::class, 'show'])->name('userloans.show');
